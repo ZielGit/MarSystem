@@ -59,10 +59,13 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="auth-login-basic.html">
-                            <i class="bx bx-power-off me-2"></i>
-                            <span class="align-middle">{{ __('Log Out') }}</span>
-                        </a>
+                        <form action="{{ route('logout') }}" method="post" x-data>
+                            @csrf
+                            <a class="dropdown-item" href="{{ route('logout') }}" @click.prevent="$root.submit();">
+                                <i class="bx bx-power-off me-2"></i>
+                                <span class="align-middle">{{ __('Log Out') }}</span>
+                            </a>
+                        </form>
                     </li>
                 </ul>
             </li>
