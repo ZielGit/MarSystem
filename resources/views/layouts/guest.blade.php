@@ -37,7 +37,7 @@
 
         <!-- Styles -->
         {{-- los estilos de jetstream estan encima de sneat quitar si molesta a los input --}}
-        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+        {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
