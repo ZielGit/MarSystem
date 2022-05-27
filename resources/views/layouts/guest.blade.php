@@ -14,6 +14,9 @@
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap">
         {{-- Falta los fonts del template --}}
 
+        <!-- Styles -->
+        <link rel="stylesheet" href="{{ mix('css/app.css') }}">
+
         <!-- Icons. Uncomment required icon fonts -->
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/fonts/boxicons.css') }}" />
 
@@ -34,10 +37,6 @@
         <!--! Template customizer & Theme config files MUST be included after core stylesheets and helpers.js in the <head> section -->
         <!--? Config:  Mandatory theme config file contain global vars & default theme options, Set your preferred theme option in this file.  -->
         <script src="{{ asset('sneat/assets/js/config.js') }}"></script>
-
-        <!-- Styles -->
-        {{-- los estilos de jetstream estan encima de sneat quitar si molesta a los input --}}
-        {{-- <link rel="stylesheet" href="{{ mix('css/app.css') }}"> --}}
 
         <!-- Scripts -->
         <script src="{{ mix('js/app.js') }}" defer></script>
