@@ -138,7 +138,7 @@
                                 @endif
                             </div>
                             <div class="input-group input-group-merge">
-                                <input type="password" id="password" class="form-control" name="password" required autocomplete="current-password" />
+                                <input type="password" id="password" class="form-control" name="password" placeholder="************" required autocomplete="current-password" />
                                 <span class="input-group-text cursor-pointer"><i class="bx bx-hide"></i></span>
                             </div>
                         </div>
