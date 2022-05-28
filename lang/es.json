@@ -391,5 +391,14 @@
     "Your registered VAT Number is :vatNumber.": "Su número VAT registrado es :vatNumber.",
     "Zip \/ Postal Code": "Zip \/ Código postal",
 
-    "Welcome to the MAR system":"Bienvenido al sistema de MAR"
+    "Welcome to the MAR system":"Bienvenido al sistema de MAR",
+    "Enter your email":"Introduce tu correo electrónico",
+    "Forgot Password":"Has Olvidado tu Contraseña",
+    "Enter your email and we'll send you instructions to reset your password":"Ingrese su correo electrónico y le enviaremos instrucciones para restablecer su contraseña.",
+    "Back to login":"Atrás para iniciar sesión",
+    "User List":"Lista de Usuarios",
+    "Create User":"Crear Usuario",
+    "Edit User":"Editar Usuario",
+    "Show User":"Mostrar Usuario",
+    "Show":"Mostrar"
 }

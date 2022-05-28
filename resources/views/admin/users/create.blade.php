@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title') {{ __('Create User') }} @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <h4 class="fw-bold py-3 mb-3">{{ __('Create User') }} </h4>

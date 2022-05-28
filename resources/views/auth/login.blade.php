@@ -48,6 +48,7 @@
 </x-guest-layout> --}}
 {{-- El authentication-inner esta fallando el before, las alertas no tienen rojo --}}
 @extends('layouts.guest')
+@section('title') {{ __('Login') }} @endsection
 @section('content')
 <div class="container-xxl">
     <div class="authentication-wrapper authentication-basic container-p-y">
@@ -57,7 +58,7 @@
                 <div class="card-body">
                     <!-- Logo -->
                     <div class="app-brand justify-content-center">
-                        <a href="#" class="app-brand-link gap-2">
+                        <a href="https://www.mar.com.pe/" class="app-brand-link gap-2" target="_blank">
                             <span class="app-brand-logo demo">
                                 <img src="{{ asset('img/logo-mar-srl.png') }}" width="260" alt="" srcset="">
                             </span>
@@ -101,7 +102,7 @@
                             </div>
                         </div>
                         <div class="mb-3">
-                            <button class="btn btn-primary d-grid w-100" type="submit">{{ __('Sign in') }}</button>
+                            <button class="btn btn-primary d-grid w-100" type="submit">{{ __('Log in') }}</button>
                         </div>
                     </form>
 
