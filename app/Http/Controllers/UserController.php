@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
 {
@@ -25,7 +27,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('admin.users.create');
+        $roles = Role::all();
+        return view('admin.users.create', compact('roles'));
     }
 
     /**
@@ -36,7 +39,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = User::create($request->all());
+        $user->update(['password'=> Hash::make($request->password)]);
+        $user->roles()->sync($request->get('roles'));
+        return redirect()->route('users.index');
     }
 
     /**
@@ -58,7 +64,8 @@ class UserController extends Controller
      */
     public function edit(User $user)
     {
-        return view('admin.users.edit', compact('user'));
+        $roles = Role::get();
+        return view('admin.users.edit', compact('user', 'roles'));
     }
 
     /**
@@ -68,9 +75,11 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request,User $user)
     {
-        //
+        $user->update($request->all());
+        $user->roles()->sync($request->roles);
+        return redirect()->route('users.index');
     }
 
     /**

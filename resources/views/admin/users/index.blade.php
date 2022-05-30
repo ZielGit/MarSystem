@@ -20,6 +20,7 @@
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('Name') }}</th>
                             <th>{{ __('Email') }}</th>
+                            <th>{{ __('Role') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
@@ -29,6 +30,11 @@
                                 <td>{{ $user->id }}</td>
                                 <td>{{ $user->name }}</td>
                                 <td>{{ $user->email }}</td>
+                                <td>
+                                    @foreach ($user->roles as $role)
+                                        {{ $role->name }}
+                                    @endforeach
+                                </td>
                                 <td>
                                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">{{ __('Show') }}</a>
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>

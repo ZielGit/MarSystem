@@ -20,6 +20,17 @@
                   <label for="password" class="form-label">{{ __('Password') }}</label>
                   <input type="password" class="form-control" name="password" id="password">
                 </div>
+                <div class="mb-3">
+                    <label class="form-label">{{ __('Role') }}</label>
+                    @foreach ($roles as $role)
+                        <div class="form-check">
+                            <label class="form-check-label" for="role_{{ $role->id }}">
+                                <input type="radio" class="form-check-input" name="roles[]" id="role_{{ $role->id }}" value="{{ $role->id }}">
+                                {{ $role->name }}
+                            </label>
+                        </div>  
+                    @endforeach
+                </div>
                 <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
                 <a href="{{ route('users.index') }}" class="btn btn-secondary float-end">{{ __('Cancel') }}</a>
             </form>
