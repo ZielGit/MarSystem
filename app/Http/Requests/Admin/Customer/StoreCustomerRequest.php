@@ -25,6 +25,7 @@ class StoreCustomerRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'type' => 'required|in:store,municipality',
             'email' => 'nullable|string|email|unique:customers,email',
             'document_type' => 'required|in:RUC,DNI',
             'document_number' => 'required|unique:customers,document_number',

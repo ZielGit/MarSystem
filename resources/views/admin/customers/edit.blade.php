@@ -18,6 +18,16 @@
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
+                        <label for="type" class="form-label">{{ __('Type') }}</label>
+                        <select class="form-control" name="document_type" id="document_type">
+                            <option value="store" {{ (($customer->type == 'store')? 'selected' : '') }}>{{ __('Store') }}</option>
+                            <option value="municipality" {{ (($customer->type == 'municipality')? 'selected' : '') }}>{{ __('Municipality') }}</option>
+                        </select>
+                        @error('type')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">{{ __('Email') }}</label>
                         <input type="email" class="form-control" name="email" id="email" value="{{ old('email', $customer->email) }}" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text text-muted">{{ __('This is an optional field') }}</div>
