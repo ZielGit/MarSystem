@@ -12,11 +12,17 @@
                     <div class="mb-3 col-md-6">
                         <label for="name" class="form-label">{{ __('Name') }}</label>
                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
+                        @error('name')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="email" class="form-label">{{ __('Email') }}</label>
                         <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text text-muted">{{ __('This is an optional field') }}</div>
+                        @error('email')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="document_type" class="form-label">{{ __('Document Type') }}</label>
@@ -24,20 +30,32 @@
                             <option value="RUC">{{ __('RUC') }}</option>
                             <option value="DNI">{{ __('DNI') }}</option>
                         </select>
+                        @error('document_type')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="document_number" class="form-label">{{ __('Document Number') }}</label>
-                        <input type="number" class="form-control" name="document_number" id="document_number" value="{{ old('document_number') }}">
+                        <input type="number" class="form-control" name="document_number" id="document_number" min="0" value="{{ old('document_number') }}">
+                        @error('document_number')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="phone" class="form-label">{{ __('Phone') }}</label>
-                        <input type="number" class="form-control" name="phone" id="phone" value="{{ old('phone') }}"  aria-describedby="phoneHelp">
+                        <input type="tel" class="form-control" name="phone" id="phone" value="{{ old('phone') }}"  aria-describedby="phoneHelp">
                         <div id="phoneHelp" class="form-text text-muted">{{ __('This is an optional field') }}</div>
+                        @error('phone')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="address" class="form-label">{{ __('Address') }}</label>
                         <input type="text" class="form-control" name="address" id="address" value="{{ old('address') }}"  aria-describedby="addressHelp">
                         <div id="addressHelp" class="form-text text-muted">{{ __('This is an optional field') }}</div>
+                        @error('address')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>

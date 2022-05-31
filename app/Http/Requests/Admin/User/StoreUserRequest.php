@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Customer;
+namespace App\Http\Requests\Admin\User;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class StoreCustomerRequest extends FormRequest
+class StoreUserRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,11 +25,10 @@ class StoreCustomerRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
-            'email' => 'nullable|string|email|unique:customers,email',
-            'document_type' => 'required|in:RUC,DNI',
-            'document_number' => 'required|unique:customers,document_number',
-            'phone' => 'nullable|string|unique:customers,phone',
-            'address' => 'nullable|string'
+            'email' => 'required|email|unique:users,email',
+            'password' => 'required',
+            'roles.*' => 'integer',
+            'roles' => 'required|array'
         ];
     }
 }

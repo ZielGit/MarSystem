@@ -24,7 +24,12 @@ class UpdateCustomerRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string',
+            'email' => 'nullable|string|email|unique:customers,email,'.$this->route('customer')->id,
+            'document_type' => 'required|in:RUC,DNI',
+            'document_number' => 'required|unique:customers,document_number,'.$this->route('customer')->id,
+            'phone' => 'nullable|string|unique:customers,phone,'.$this->route('customer')->id,
+            'address' => 'nullable|string'
         ];
     }
 }
