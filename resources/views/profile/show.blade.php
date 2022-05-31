@@ -1,4 +1,5 @@
 @extends('layouts.app')
+@section('title') {{ __('User Profile') }} @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">

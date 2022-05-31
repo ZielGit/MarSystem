@@ -396,6 +396,7 @@
     "Forgot Password":"Has Olvidado tu Contraseña",
     "Enter your email and we'll send you instructions to reset your password":"Ingrese su correo electrónico y le enviaremos instrucciones para restablecer su contraseña.",
     "Back to login":"Atrás para iniciar sesión",
+    "User Profile":"Perfil del Usuario",
     "Users List":"Lista de Usuarios",
     "Users":"Usuarios",
     "Create New User":"Crear Nuevo Usuario",
@@ -416,5 +417,9 @@
     "Document Type":"Tipo de Documento",
     "Document Number":"Número de Documento",
     "Phone":"Teléfono",
-    "This is an optional field":"Este campo es opcional"
+    "This is an optional field":"Este campo es opcional",
+    "List of Products":"Lista de Productos",
+    "Products":"Productos",
+    "Create New Product":"Crear Nuevo Producto",
+    "Create Product":"Crear Producto"
 }
