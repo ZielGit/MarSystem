@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title') {{ __('Users List') }} @endsection
+@section('title') {{ __('Customers List') }} @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-lg-6">
-            <h4 class="fw-bold py-3 mb-3">{{ __('Users') }} </h4>
+            <h4 class="fw-bold py-3 mb-3">{{ __('Customers') }} </h4>
         </div>
         <div class="col-lg-6">
-            <a href="{{ route('users.create') }}" class="btn btn-primary float-end mt-2">{{ __('Create New User') }}</a>
+            <a href="{{ route('customers.create') }}" class="btn btn-primary float-end mt-2">{{ __('Create New Customer') }}</a>
         </div>
     </div>
     
@@ -19,26 +19,22 @@
                         <tr>
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('Name') }}</th>
-                            <th>{{ __('Email') }}</th>
-                            <th>{{ __('Role') }}</th>
+                            <th>{{ __('Document Type') }}</th>
+                            <th>{{ __('Document Number') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($users as $user)
+                        @foreach ($customers as $customer)
                             <tr>
-                                <td>{{ $user->id }}</td>
-                                <td>{{ $user->name }}</td>
-                                <td>{{ $user->email }}</td>
+                                <td>{{ $customer->id }}</td>
+                                <td>{{ $customer->name }}</td>
+                                <td>{{ $customer->document_type }}</td>
+                                <td>{{ $customer->document_number }}</td>
                                 <td>
-                                    @foreach ($user->roles as $role)
-                                        {{ $role->name }}
-                                    @endforeach
-                                </td>
-                                <td>
-                                    <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">{{ __('Show') }}</a>
-                                    <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" class="d-inline" method="post">
+                                    <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-info">{{ __('Show') }}</a>
+                                    <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
+                                    <form action="{{ route('customers.destroy', $customer->id) }}" class="d-inline" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>

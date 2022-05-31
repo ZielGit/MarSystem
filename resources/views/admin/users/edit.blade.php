@@ -29,7 +29,7 @@
                                 <input type="radio" class="form-check-input" name="roles[]" id="role_{{ $role->id }}" value="{{ $role->id }}" {{ in_array($role->id, old('roles', $user->roles->pluck('id')->toArray())) ? ' checked' : '' }}>
                                 {{ $role->name }}
                             </label>
-                        </div> 
+                        </div>
                     @endforeach
                 </div>
                 <button type="submit" class="btn btn-primary">{{ __('Edit') }}</button>

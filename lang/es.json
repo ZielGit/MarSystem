@@ -396,9 +396,21 @@
     "Forgot Password":"Has Olvidado tu Contraseña",
     "Enter your email and we'll send you instructions to reset your password":"Ingrese su correo electrónico y le enviaremos instrucciones para restablecer su contraseña.",
     "Back to login":"Atrás para iniciar sesión",
-    "User List":"Lista de Usuarios",
+    "Users List":"Lista de Usuarios",
+    "Users":"Usuarios",
+    "Create New User":"Crear Nuevo Usuario",
     "Create User":"Crear Usuario",
     "Edit User":"Editar Usuario",
     "Show User":"Mostrar Usuario",
-    "Show":"Mostrar"
+    "Show":"Mostrar",
+    "Customers List":"Lista de Clientes",
+    "Customers":"Clientes",
+    "Create New Customer":"Crear Nuevo Cliente",
+    "Create Customer":"Crear Cliente",
+    "Edit Customer":"Editar Cliente",
+    "Show Customer":"Mostrar Cliente",
+    "Document Type":"Tipo de Documento",
+    "Document Number":"Número de Documento",
+    "Phone":"Teléfono",
+    "This is an optional field":"Este campo es opcional"
 }

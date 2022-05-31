@@ -28,7 +28,7 @@
                                 <input type="radio" class="form-check-input" name="roles[]" id="role_{{ $role->id }}" value="{{ $role->id }}">
                                 {{ $role->name }}
                             </label>
-                        </div>  
+                        </div>
                     @endforeach
                 </div>
                 <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
