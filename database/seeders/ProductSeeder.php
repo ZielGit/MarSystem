@@ -16,11 +16,11 @@ class ProductSeeder extends Seeder
     public function run()
     {
         Product::create([
-            'name' => 'Plástico'
+            'name' => 'Cartón'
         ]);
 
         Product::create([
-            'name' => 'Cartón'
+            'name' => 'Plástico'
         ]);
 
         Product::create([
