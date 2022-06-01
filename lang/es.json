@@ -419,7 +419,13 @@
     "Phone":"Teléfono",
     "This is an optional field":"Este campo es opcional",
     "List of Products":"Lista de Productos",
+    "Product":"Producto",
     "Products":"Productos",
     "Create New Product":"Crear Nuevo Producto",
-    "Create Product":"Crear Producto"
+    "Create Product":"Crear Producto",
+    "Types of Products":"Tipos de Productos",
+    "Product Type List":"Lista de Tipos de Productos",
+    "Create New Type":"Crear Nuevo Tipo",
+    "Create Product Type":"Crear Tipo de Producto",
+    "Edit Product Type":"Editar Tipo de Producto"
 }
