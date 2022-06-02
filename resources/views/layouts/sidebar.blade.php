@@ -41,5 +41,10 @@
                 <i class='menu-icon tf-icons bx bx-purchase-tag'></i> {{ __('Types of Products') }}
             </a>
         </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('providers.*')">
+            <a href="{{ route('providers.index') }}" class="menu-link">
+                <i class='menu-icon tf-icons bx bxs-truck'></i> {{ __('Providers') }}
+            </a>
+        </x-jet-nav-link>
     </ul>
 </aside>

@@ -432,5 +432,12 @@
     "Product Type List":"Lista de Tipos de Productos",
     "Create New Type":"Crear Nuevo Tipo",
     "Create Product Type":"Crear Tipo de Producto",
-    "Edit Product Type":"Editar Tipo de Producto"
+    "Edit Product Type":"Editar Tipo de Producto",
+    "Providers":"Proveedores",
+    "List of Providers":"Lista de Proveedores",
+    "Create New Provider":"Crear Nuevo Proveedor",
+    "Create Provider":"Crear Proveedor",
+    "RUC":"RUC",
+    "Provider Details":"Detalles del Proveedor",
+    "Edit Provider":"Editar Proveedor"
 }
