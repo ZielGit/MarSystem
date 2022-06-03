@@ -31,26 +31,38 @@
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
+                    
+                    <div class="mb-3 col-md-6 statusShift">
+                        <label for="shift" class="form-label">{{ __('Shift') }}</label>
+                        <select class="form-control" name="shift" id="shift">
+                            <option value="complete" {{ (($user->shift == 'complete') ? 'selected' : '') }}>{{ __('Complete') }}</option>
+                            <option value="morning" {{ (($user->shift == 'morning') ? 'selected' : '') }}>{{ __('Morning') }}</option>
+                            <option value="afternoon" {{ (($user->shift == 'afternoon') ? 'selected' : '') }}>{{ __('Afternoon') }}</option>
+                        </select>
+                        @error('shift')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
                     <div class="mb-3 col-md-6">
                         <label class="form-label">{{ __('Role') }}</label>
-                        @foreach ($roles as $role)
-                            <div class="form-check">
-                                <label class="form-check-label" for="role_{{ $role->id }}">
-                                    <input type="radio" class="form-check-input" name="roles[]" id="role_{{ $role->id }}" value="{{ $role->id }}" {{ in_array($role->id, old('roles', $user->roles->pluck('id')->toArray())) ? ' checked' : '' }}>
-                                    {{ $role->name }}
-                                </label>
-                            </div>
-                        @endforeach
+                        <select class="form-control" name="roles[]" id="roles">
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}" {{ (in_array($role->id, old('roles', [])) || $user->roles->contains($role->id)) ? 'selected' : '' }}>{{ $role->name }}</option>
+                            @endforeach
+                        </select>
                         @error('roles')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3 col-md-6 statusShift">
-                        <label for="shift" class="form-label">{{ __('Shift') }}</label>
-                        <select class="form-control" name="shift" id="shift">
-                            <option value="morning" {{ (($user->shift == 'morning') ? 'selected' : '') }}>{{ __('Morning') }}</option>
-                            <option value="afternoon" {{ (($user->shift == 'afternoon') ? 'selected' : '') }}>{{ __('Afternoon') }}</option>
+                    <div class="mb-3 col-md-6">
+                        <label for="business" class="form-label">{{ __('Business') }}</label>
+                        <select class="form-control" name="business" id="business">
+                            <option value="main" {{ (($user->business == 'main') ? 'selected' : '') }}>{{ __('Main') }}</option>
+                            <option value="branch_office" {{ (($user->business == 'branch_office') ? 'selected' : '') }}>{{ __('Branch Office') }}</option>
                         </select>
+                        @error('business')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">{{ __('Edit') }}</button>
@@ -67,16 +79,16 @@
         // $(".statusShift").hide();
 
         // Mostrar si es operario que es el id = 3
-        $("input[type='radio']").click(function() {
-            var shift = $(this).val();
-            if (shift == "3") {
-                $(".statusShift").show();
-            } else {
-                $(".statusShift").hide();
-                // Para limpiar tenemos que llamar denuevo en el if
-                // Otra solucion crear un option value vacio y ponerlo por defecto
-                // $("#shift").empty();
-            }
-        });
+        // $("input[type='radio']").click(function() {
+        //     var shift = $(this).val();
+        //     if (shift == "3") {
+        //         $(".statusShift").show();
+        //     } else {
+        //         $(".statusShift").hide();
+        //         // Para limpiar tenemos que llamar denuevo en el if
+        //         // Otra solucion crear un option value vacio y ponerlo por defecto
+        //         // $("#shift").empty();
+        //     }
+        // });
     </script>
 @endpush

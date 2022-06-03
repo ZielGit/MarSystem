@@ -37,7 +37,8 @@ class User extends Authenticatable
         'dni',
         'email',
         'password',
-        'shift'
+        'shift',
+        'business'
     ];
 
     /**

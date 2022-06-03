@@ -41,26 +41,39 @@
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
-                        <label class="form-label">{{ __('Roles') }}</label>
-                        @foreach ($roles as $role)
-                            <div class="form-check">
-                                <label class="form-check-label" for="role_{{ $role->id }}">
-                                    <input type="radio" class="form-check-input" name="roles[]" id="role_{{ $role->id }}" value="{{ $role->id }}">
-                                    {{ $role->name }}
-                                </label>
-                            </div>
-                        @endforeach
+                        <label for="shift" class="form-label">{{ __('Shift') }}</label>
+                        <select class="form-control" name="shift" id="shift">
+                            <option value="" disabled selected>{{ __('Select a shift') }}</option>
+                            <option value="complete">{{ __('Complete') }}</option>
+                            <option value="morning">{{ __('Morning') }}</option>
+                            <option value="afternoon">{{ __('Afternoon') }}</option>
+                        </select>
+                        @error('shift')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label class="form-label">{{ __('Role') }}</label>
+                        <select class="form-control" name="roles[]" id="roles">
+                            <option value="" disabled selected>{{ __('Select a role') }}</option>
+                            @foreach ($roles as $role)
+                                <option value="{{ $role->id }}" {{ in_array( $role->id, old('roles', [])) ? ' selected' : '' }}>{{ $role->name }}</option>
+                            @endforeach
+                        </select>
                         @error('roles')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
-                    <div class="mb-3 col-md-6 statusShift">
-                        <label for="shift" class="form-label">{{ __('Shift') }}</label>
-                        <select class="form-control" name="shift" id="shift">
-                            <option value="" disabled selected>{{ __('Select a Shift') }}</option>
-                            <option value="morning">{{ __('Morning') }}</option>
-                            <option value="afternoon">{{ __('Afternoon') }}</option>
+                    <div class="mb-3 col-md-6">
+                        <label for="business" class="form-label">{{ __('Business') }}</label>
+                        <select class="form-control" name="business" id="business">
+                            <option value="" disabled selected>{{ __('Select an option') }}</option>
+                            <option value="main">{{ __('Main') }}</option>
+                            <option value="branch_office">{{ __('Branch Office') }}</option>
                         </select>
+                        @error('business')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
@@ -74,17 +87,17 @@
 @push('scripts')
     <script>
         "use strict"
-        $(".statusShift").hide();
+        // $(".statusShift").hide();
 
         // Mostrar si es operario que es el id = 3
-        $("input[type='radio']").click(function() {
-            var shift = $(this).val();
-            if (shift == "3") {
-                $(".statusShift").show();
-            } else {
-                $(".statusShift").hide();
-            }
-        });
+        // $("input[type='radio']").click(function() {
+        //     var shift = $(this).val();
+        //     if (shift == "3") {
+        //         $(".statusShift").show();
+        //     } else {
+        //         $(".statusShift").hide();
+        //     }
+        // });
 
         $('#buttonSearch').click(function(){
             var dni = $('#dni');

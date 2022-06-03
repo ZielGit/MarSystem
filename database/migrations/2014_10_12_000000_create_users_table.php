@@ -20,7 +20,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
-            $table->enum('shift', ['morning', 'afternoon'])->nullable();
+            $table->enum('shift', ['complete', 'morning', 'afternoon'])->default('complete');
             $table->enum('business', ['main', 'branch_office'])->default('main');
             $table->rememberToken();
             $table->foreignId('current_team_id')->nullable();
