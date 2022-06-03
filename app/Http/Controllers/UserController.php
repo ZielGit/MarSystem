@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Admin\User\StoreUserRequest;
 use App\Http\Requests\Admin\User\UpdateUserRequest;
 use App\Models\User;
+use GuzzleHttp\Client;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Spatie\Permission\Models\Role;
@@ -94,5 +95,32 @@ class UserController extends Controller
     {
         $user->delete();
         return back();
+    }
+
+    public function search(Request $request)
+    {
+        $token = config('services.apisunat.token');
+        $baseurl = config('services.apisunat.baseurl');
+        $urldni = config('services.apisunat.urldni');
+
+        if ($request->ajax()) {
+            $numero = $request->dni;
+            
+            $client = new Client(['base_uri' => $baseurl, 'verify' => false]);
+            $parameters = [
+                'http_errors' => false,
+                'connect_timeout' => 5,
+                'headers' => [
+                    'Authorization' => 'Bearer '.$token,
+                    'Referer' => $urldni,
+                    'User-Agent' => 'laravel/guzzle',
+                    'Accept' => 'application/json',
+                ],
+                'query' => ['numero' => $numero]
+            ];
+            $res = $client->request('GET', '/v1/dni', $parameters);
+            $datos = json_decode($res->getBody()->getContents(), true);
+            return response()->json($datos);
+        }
     }
 }

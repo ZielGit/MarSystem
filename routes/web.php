@@ -27,6 +27,8 @@ Route::resource('products', ProductController::class)->names('products');
 Route::resource('product-types', ProductTypeController::class)->names('product.types');
 Route::resource('providers', ProviderController::class)->names('providers');
 
+Route::get('search', [UserController::class, 'search'])->name('search');
+
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),

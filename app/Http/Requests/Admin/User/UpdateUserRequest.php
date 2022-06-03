@@ -25,6 +25,7 @@ class UpdateUserRequest extends FormRequest
     {
         return [
             'name' => 'required|string',
+            'dni' => 'required|string|max:8|min:8|unique:users,dni,'.$this->route('user')->id,
             'email' => 'required|email|unique:users,email,'.$this->route('user')->id,
             'roles.*' => 'integer',
             'roles' => 'required|array'

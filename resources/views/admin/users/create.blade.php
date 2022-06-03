@@ -11,7 +11,10 @@
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label for="dni" class="form-label">{{ __('DNI') }}</label>
-                        <input type="number" class="form-control" name="dni" id="dni" min="0" value="{{ old('dni') }}">
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="dni" id="dni" min="0" value="{{ old('dni') }}" aria-describedby="buttonSearch"/>
+                            <button class="btn btn-warning" type="button" id="buttonSearch">{{ __('Search') }}</button>
+                        </div>
                         @error('dni')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
@@ -81,6 +84,21 @@
             } else {
                 $(".statusShift").hide();
             }
+        });
+
+        $('#buttonSearch').click(function(){
+            var dni = $('#dni');
+            $.ajax({
+                url: "{{ route('search') }}",
+                method: 'GET',
+                data: {
+                    dni: dni.val(),
+                },
+                dataType: 'json',
+                success:function(data){
+                    $('#name').val(data.nombre);
+                }
+            });
         });
     </script>
 @endpush
