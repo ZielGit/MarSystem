@@ -16,6 +16,8 @@
         <!-- Styles -->
         <link rel="stylesheet" href="{{ mix('css/app.css') }}">
 
+        @livewireStyles
+
         <!-- Icons. Uncomment required icon fonts -->
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/fonts/boxicons.css') }}" />
 
@@ -92,6 +94,8 @@
         <!-- / Layout wrapper -->
 
         @stack('modals')
+
+        @livewireScripts
 
         <!-- Core JS -->
         <!-- build:js assets/vendor/js/core.js -->
