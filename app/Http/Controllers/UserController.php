@@ -97,7 +97,7 @@ class UserController extends Controller
         return back();
     }
 
-    public function search(Request $request)
+    public function search_dni(Request $request)
     {
         $token = config('services.apisunat.token');
         $baseurl = config('services.apisunat.baseurl');

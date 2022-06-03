@@ -11,13 +11,16 @@
                 <div class="row">
                     <div class="mb-3 col-md-6">
                         <label for="ruc" class="form-label">{{ __('RUC') }}</label>
-                        <input type="number" class="form-control" name="ruc" id="ruc" value="{{ old('ruc') }}">
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="ruc" id="ruc" min="0" value="{{ old('ruc') }}" aria-describedby="buttonSearch"/>
+                            <button class="btn btn-warning" type="button" id="buttonSearch">{{ __('Search') }}</button>
+                        </div>
                         @error('ruc')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
-                        <label for="name" class="form-label">{{ __('Name') }}</label>
+                        <label for="name" class="form-label">{{ __('Name - Business Name') }}</label>
                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                         @error('name')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
@@ -47,3 +50,22 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $('#buttonSearch').click(function(){
+            var ruc = $('#ruc');
+            $.ajax({
+                url: "{{ route('search.ruc') }}",
+                method: 'GET',
+                data: {
+                    ruc: ruc.val(),
+                },
+                dataType: 'json',
+                success:function(data){
+                    $('#name').val(data.nombre);
+                }
+            });
+        });
+    </script>
+@endpush

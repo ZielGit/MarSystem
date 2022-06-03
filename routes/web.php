@@ -27,7 +27,8 @@ Route::resource('products', ProductController::class)->names('products');
 Route::resource('product-types', ProductTypeController::class)->names('product.types');
 Route::resource('providers', ProviderController::class)->names('providers');
 
-Route::get('search', [UserController::class, 'search'])->name('search');
+Route::get('search-dni', [UserController::class, 'search_dni'])->name('search.dni');
+Route::get('search-ruc', [ProviderController::class, 'search_ruc'])->name('search.ruc');
 
 // Route::middleware([
 //     'auth:sanctum',

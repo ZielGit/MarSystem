@@ -89,7 +89,7 @@
         $('#buttonSearch').click(function(){
             var dni = $('#dni');
             $.ajax({
-                url: "{{ route('search') }}",
+                url: "{{ route('search.dni') }}",
                 method: 'GET',
                 data: {
                     dni: dni.val(),
