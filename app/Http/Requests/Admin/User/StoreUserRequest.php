@@ -31,7 +31,8 @@ class StoreUserRequest extends FormRequest
             'shift' => 'required|in:complete,morning,afternoon',
             'business' => 'required|in:main,branch_office',
             'roles.*' => 'integer',
-            'roles' => 'required|array'
+            'roles' => 'required|array',
+            'branch_office_id' => 'nullable|exists:branch_offices,id'
         ];
     }
 }

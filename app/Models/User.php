@@ -38,7 +38,8 @@ class User extends Authenticatable
         'email',
         'password',
         'shift',
-        'business'
+        'business',
+        'branch_office_id'
     ];
 
     /**

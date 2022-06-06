@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\Admin\User\StoreUserRequest;
 use App\Http\Requests\Admin\User\UpdateUserRequest;
+use App\Models\BranchOffice;
 use App\Models\User;
 use GuzzleHttp\Client;
 use Illuminate\Http\Request;
@@ -31,7 +32,8 @@ class UserController extends Controller
     public function create()
     {
         $roles = Role::all();
-        return view('admin.users.create', compact('roles'));
+        $branchOffices = BranchOffice::get();
+        return view('admin.users.create', compact('roles', 'branchOffices'));
     }
 
     /**
@@ -68,7 +70,8 @@ class UserController extends Controller
     public function edit(User $user)
     {
         $roles = Role::get();
-        return view('admin.users.edit', compact('user', 'roles'));
+        $branchOffices = BranchOffice::get();
+        return view('admin.users.edit', compact('user', 'roles', 'branchOffices'));
     }
 
     /**

@@ -64,6 +64,8 @@
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="mb-3 col-md-6" id="branch_offices">
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">{{ __('Edit') }}</button>
                 <a href="{{ route('users.index') }}" class="btn btn-secondary float-end">{{ __('Cancel') }}</a>
@@ -76,19 +78,41 @@
 @push('scripts')
     <script>
         "use strict"
-        // $(".statusShift").hide();
+        
+        if($("#business").val() == "branch_office"){
+            $("#business").parent().parent().children("#branch_offices").html(
+                '<label for="branch_office_id" class="form-label">{{ __("Branch Office") }}</label>'+
+                '<select class="form-control" name="branch_office_id" id="branch_office_id">'+
+                    '@foreach ($branchOffices as $branchOffice)'+
+                        '<option value="{{ $branchOffice->id }}" {{ $branchOffice->id == $user->branch_office_id ? "selected" : "" }}>'+
+                            '{{ $branchOffice->name }}'+
+                        '</option>'+
+                    '@endforeach'+
+                '</select>'+
+                '@error("branch_office_id")'+
+                    '<div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>'+
+                '@enderror'
+            )
+        }
 
-        // Mostrar si es operario que es el id = 3
-        // $("input[type='radio']").click(function() {
-        //     var shift = $(this).val();
-        //     if (shift == "3") {
-        //         $(".statusShift").show();
-        //     } else {
-        //         $(".statusShift").hide();
-        //         // Para limpiar tenemos que llamar denuevo en el if
-        //         // Otra solucion crear un option value vacio y ponerlo por defecto
-        //         // $("#shift").empty();
-        //     }
-        // });
+        $("#business").change(function (e) { 
+            var business = $(this).val();
+            if (business == "branch_office") {
+                $(this).parent().parent().children("#branch_offices").html(
+                    '<label for="branch_office_id" class="form-label">{{ __("Branch Office") }}</label>'+
+                    '<select class="form-control" name="branch_office_id" id="branch_office_id">'+
+                        '<option value="" disabled selected>{{ __("Select a branch office") }}</option>'+
+                        '@foreach ($branchOffices as $branchOffice)'+
+                            '<option value="{{ $branchOffice->id }}">{{ $branchOffice->name }}</option>'+
+                        '@endforeach'+
+                    '</select>'+
+                    '@error("branch_office_id")'+
+                        '<div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>'+
+                    '@enderror'
+                )
+            } else {
+                $(this).parent().parent().children("#branch_offices").html('')
+            }
+        });
     </script>
 @endpush

@@ -17,13 +17,18 @@
         <!-- Dashboard -->
         <x-jet-nav-link :active="request()->routeIs('dashboard')">
             <a href="{{ route('dashboard') }}" class="menu-link">
-                <i class="menu-icon tf-icons bx bx-home-circle"></i> {{ __('Dashboard') }}
+                <i class="menu-icon tf-icons bx bxs-dashboard"></i> {{ __('Dashboard') }}
             </a>
         </x-jet-nav-link>
         <!-- Users -->
         <x-jet-nav-link :active="request()->routeIs('users.*')">
             <a href="{{ route('users.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-user"></i> {{ __('Users') }}
+            </a>
+        </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('branch.offices.*')">
+            <a href="{{ route('branch.offices.index') }}" class="menu-link">
+                <i class='menu-icon tf-icons bx bx-home'></i> {{ __('Branch Offices') }}
             </a>
         </x-jet-nav-link>
         <x-jet-nav-link :active="request()->routeIs('customers.*')">
