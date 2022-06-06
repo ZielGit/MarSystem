@@ -36,16 +36,23 @@
                 <i class='menu-icon tf-icons bx bxs-business'></i> {{ __('Customers') }}
             </a>
         </x-jet-nav-link>
-        <x-jet-nav-link :active="request()->routeIs('products.*')">
-            <a href="{{ route('products.index') }}" class="menu-link">
-                <i class='menu-icon tf-icons bx bx-package'></i> {{ __('Products') }}
+        <x-nav-link-toggle :active="request()->routeIs('products.*', 'product.types.*')">
+            <a href="javascript:void(0);" class="menu-link menu-toggle">
+              <i class="menu-icon tf-icons bx bx-package"></i> {{ __('Manage Products') }}
             </a>
-        </x-jet-nav-link>
-        <x-jet-nav-link :active="request()->routeIs('product.types.*')">
-            <a href="{{ route('product.types.index') }}" class="menu-link">
-                <i class='menu-icon tf-icons bx bx-purchase-tag'></i> {{ __('Types of Products') }}
-            </a>
-        </x-jet-nav-link>
+            <ul class="menu-sub">
+                <x-jet-nav-link :active="request()->routeIs('products.*')">
+                    <a href="{{ route('products.index') }}" class="menu-link">
+                        {{ __('Products') }}
+                    </a>
+                </x-jet-nav-link>
+                <x-jet-nav-link :active="request()->routeIs('product.types.*')">
+                    <a href="{{ route('product.types.index') }}" class="menu-link">
+                        {{ __('Types') }}
+                    </a>
+                </x-jet-nav-link>
+            </ul>
+        </x-nav-link-toggle>
         <x-jet-nav-link :active="request()->routeIs('providers.*')">
             <a href="{{ route('providers.index') }}" class="menu-link">
                 <i class='menu-icon tf-icons bx bxs-truck'></i> {{ __('Providers') }}
