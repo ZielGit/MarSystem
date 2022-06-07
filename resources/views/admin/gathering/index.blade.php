@@ -1,13 +1,13 @@
 @extends('layouts.app')
-@section('title') {{ __('List of Providers') }} @endsection
+@section('title') {{ __('Gathering List') }} @endsection
 @section('content')
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-lg-6">
-            <h4 class="fw-bold py-3 mb-3">{{ __('Providers') }} </h4>
+            <h4 class="fw-bold py-3 mb-3">{{ __('Gathering') }} </h4>
         </div>
         <div class="col-lg-6">
-            <a href="{{ route('providers.create') }}" class="btn btn-primary float-end mt-2">{{ __('Create New Provider') }}</a>
+            <a href="{{ route('gatherings.create') }}" class="btn btn-primary float-end mt-2">{{ __('Gathering Register') }}</a>
         </div>
     </div>
     
@@ -18,21 +18,19 @@
                     <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
-                            <th>{{ __('Name - Business Name') }}</th>
-                            <th>{{ __('RUC') }}</th>
+                            {{-- <th>{{ __('Name') }}</th> --}}
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
                     <tbody class="table-border-bottom-0">
-                        @foreach ($providers as $provider)
+                        @foreach ($gatherings as $gathering)
                             <tr>
-                                <td>{{ $provider->id }}</td>
-                                <td>{{ $provider->name }}</td>
-                                <td>{{ $provider->ruc }}</td>
+                                <td>{{ $gathering->id }}</td>
+                                {{-- <td>{{ $gathering->name }}</td> --}}
                                 <td>
-                                    <a href="{{ route('providers.show', $provider->id) }}" class="btn btn-info">{{ __('Show') }}</a>
-                                    <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
-                                    {{-- <form action="{{ route('providers.destroy', $provider->id) }}" class="d-inline" method="post">
+                                    <a href="{{ route('gatherings.show', $gathering->id) }}" class="btn btn-info">{{ __('Show') }}</a>
+                                    <a href="{{ route('gatherings.edit', $gathering->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
+                                    {{-- <form action="{{ route('gatherings.destroy', $gathering->id) }}" class="d-inline" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>

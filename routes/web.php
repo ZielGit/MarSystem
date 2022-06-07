@@ -3,6 +3,7 @@
 use App\Http\Controllers\BranchOfficeController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\GatheringController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\ProviderController;
@@ -28,6 +29,7 @@ Route::resource('customers', CustomerController::class)->names('customers');
 Route::resource('products', ProductController::class)->names('products');
 Route::resource('product-types', ProductTypeController::class)->names('product.types');
 Route::resource('providers', ProviderController::class)->names('providers');
+Route::resource('gatherings', GatheringController::class)->names('gatherings');
 
 Route::get('search-dni', [UserController::class, 'search_dni'])->name('search.dni');
 Route::get('search-ruc', [ProviderController::class, 'search_ruc'])->name('search.ruc');

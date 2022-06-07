@@ -20,6 +20,8 @@
 
         <!-- Icons. Uncomment required icon fonts -->
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/fonts/boxicons.css') }}" />
+        <!-- Fontawesome -->
+        <script src="https://kit.fontawesome.com/70ed03d184.js" crossorigin="anonymous"></script>
 
         <!-- Core CSS -->
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />

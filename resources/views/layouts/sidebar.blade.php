@@ -58,5 +58,10 @@
                 <i class='menu-icon tf-icons bx bxs-truck'></i> {{ __('Providers') }}
             </a>
         </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('gatherings.*')">
+            <a href="{{ route('gatherings.index') }}" class="menu-link">
+                <i class="menu-icon fa-solid fa-people-carry-box"></i> {{ __('Gathering') }}
+            </a>
+        </x-jet-nav-link>
     </ul>
 </aside>

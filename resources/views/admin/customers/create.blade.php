@@ -18,7 +18,7 @@
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="type" class="form-label">{{ __('Type') }}</label>
-                        <select class="form-control" name="document_type" id="document_type">
+                        <select class="form-control" name="type" id="type">
                             <option value="store">{{ __('Store') }}</option>
                             <option value="municipality">{{ __('Municipality') }}</option>
                         </select>

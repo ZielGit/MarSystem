@@ -446,6 +446,7 @@
     "Create Product":"Crear Producto",
     "Select a Product":"Seleccione un Producto",
     "Types of Products":"Tipos de Productos",
+    "Product Type":"Tipo de Producto",
     "Product Type List":"Lista de Tipos de Productos",
     "Create New Type":"Crear Nuevo Tipo",
     "Create Product Type":"Crear Tipo de Producto",
@@ -457,5 +458,15 @@
     "RUC":"RUC",
     "Name - Business Name":"Nombre - Razón Social",
     "Provider Details":"Detalles del Proveedor",
-    "Edit Provider":"Editar Proveedor"
+    "Edit Provider":"Editar Proveedor",
+    "Gathering":"Acopio",
+    "Gathering List":"Lista de Acopio",
+    "Gathering Register":"Registro de Acopio",
+    "Provider":"Proveedor",
+    "Select a provider":"Seleccione un proveedor",
+    "Start Time":"Hora de Inicio",
+    "End Time":"Hora de Finalización",
+    "":"",
+    "Add Product":"Añadir Producto",
+    "Packages":"Paquetes"
 }
