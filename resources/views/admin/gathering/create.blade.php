@@ -41,20 +41,21 @@
         <div class="card mb-3">
             <div class="card-body">
                 <button type="button" class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('Add Product') }}</button>
-                <table class="table">
+                <table class="table" id="details">
                     <thead>
                         <tr>
                             {{-- <th>{{  }}</th> --}}
                             <th>{{ __('Product') }}</th>
                             <th>{{ __('Product Type') }}</th>
                             <th>{{ __('Packages') }}</th>
+                            <th>{{ __('Delete') }}</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td scope="row"></td>
+                            {{-- <td scope="row"></td>
                             <td></td>
-                            <td></td>
+                            <td></td> --}}
                         </tr>
                     </tbody>
                 </table>
@@ -104,7 +105,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{ __('Close') }}</button>
-                    <button type="button" class="btn btn-primary">{{ __('Add') }}</button>
+                    <button type="button" class="btn btn-primary" id="addProduct" data-bs-dismiss="modal">{{ __('Add') }}</button>
                 </div>
             </div>
         </div>
@@ -122,5 +123,29 @@
             });
             $('select[name=product_type_id]').append(html);
         });
+
+        $('#addProduct').click(function () { 
+            productData = document.getElementById('product_id').value.split('_');
+            product_id = productData[0];
+            product = $('#product_id option:selected').text();
+            productTypeData = document.getElementById('product_type_id').value.split('_');
+            productType_id = productTypeData[0];
+            productType = $('#product_type_id option:selected').text();
+            packages = $('#packages').val();
+            // Validar despues, que no manden campos vacios
+            var fila = '<tr>'+
+                    '<td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>'+
+                    '<td><input type="hidden" name="product_type_id[]" value="'+product_type_id+'">'+productType+'</td>'+
+                    '<td><input type="hidden" name="packages[]" value="'+packages+'">'+packages+'</td>'+
+                    '<td><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i></button></td>'+
+                '</tr>';
+            $('#details').append(fila);
+            clean();
+        });
+
+        function clean() {
+            $("#packages").val("0");
+            $("#product_id").val(null).trigger("change");
+        }
     </script>
 @endpush
