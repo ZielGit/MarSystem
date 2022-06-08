@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Gathering;
 use App\Http\Requests\Admin\Gathering\StoreGatheringRequest;
 use App\Http\Requests\Admin\Gathering\UpdateGatheringRequest;
+use App\Models\Product;
 use App\Models\Provider;
 
 class GatheringController extends Controller
@@ -28,7 +29,8 @@ class GatheringController extends Controller
     public function create()
     {
         $providers = Provider::get();
-        return view('admin.gathering.create', compact('providers'));
+        $products = Product::get();
+        return view('admin.gathering.create', compact('providers', 'products'));
     }
 
     /**

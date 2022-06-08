@@ -79,18 +79,18 @@
                     <div class="mb-3">
                         <label for="product_id" class="form-label">{{ __('Product') }}</label>
                         <select class="form-select select2-product" name="product_id" id="product_id" data-placeholder="{{ __('Choose the product') }}">
-                            <option value=""></option>
-                            {{-- @foreach ($products as $product)
-                                <option value="{{ $product->id }}" data-brands="{{ json_encode($product->brands) }}" data-services="{{ json_encode($product->services) }}">{{ $product->name }}</option>
-                            @endforeach --}}
+                            <option value="">{{ __('Select a Product') }}</option>
+                            @foreach ($products as $product)
+                                <option value="{{ $product->id }}" data-type="{{ json_encode($product->productTypes) }}">{{ $product->name }}</option>
+                            @endforeach
                         </select>
                         @error('product_id')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="brand" class="form-label">{{ __('Product Type') }}</label>
-                        <select class="form-select select2-brand" name="brand" id="brand"  data-placeholder="{{ __('Choose the brand') }}">
+                        <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
+                        <select class="form-select select2-brand" name="product_type_id" id="product_type_id"  data-placeholder="{{ __('Choose the brand') }}">
                             {{-- <option value=""></option> --}}
                         </select>
                         @error('brand_id')
@@ -112,5 +112,15 @@
 @endpush
 
 @push('scripts')
-    
+    <script>
+        $('select[name=product_id]').on('change',function() {
+            $('select[name=product_type_id]').html('<option value="">@lang('Select a type of product')</option>');
+            var productType = $('select[name=product_id] :selected').data('type');
+            var html = '';
+            productType.forEach(function myFunction(item, index) {
+                html += `<option value="${item.id}">${item.name}</option>`
+            });
+            $('select[name=product_type_id]').append(html);
+        });
+    </script>
 @endpush
