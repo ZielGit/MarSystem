@@ -8,4 +8,18 @@ use Illuminate\Database\Eloquent\Model;
 class GatheringDetail extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'gathering_id', 'product_id', 'product_type_id', 'packages'
+    ];
+
+    public function gathering()
+    {
+        return $this->belongsTo(Gathering::class);
+    }
+
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

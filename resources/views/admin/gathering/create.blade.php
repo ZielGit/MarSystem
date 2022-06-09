@@ -131,7 +131,7 @@
             product_id = productData[0];
             product = $('#product_id option:selected').text();
             productTypeData = document.getElementById('product_type_id').value.split('_');
-            productType_id = productTypeData[0];
+            product_type_id = productTypeData[0];
             productType = $('#product_type_id option:selected').text();
             packages = $('#packages').val();
             var cont = 1;

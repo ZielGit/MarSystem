@@ -7,6 +7,7 @@ use App\Http\Requests\Admin\Gathering\StoreGatheringRequest;
 use App\Http\Requests\Admin\Gathering\UpdateGatheringRequest;
 use App\Models\Product;
 use App\Models\Provider;
+use Illuminate\Support\Facades\Auth;
 
 class GatheringController extends Controller
 {
@@ -41,7 +42,20 @@ class GatheringController extends Controller
      */
     public function store(StoreGatheringRequest $request)
     {
-        //
+        $gathering = Gathering::create($request->all()+[
+            'user_id'=>Auth::user()->id
+        ]);
+
+        foreach ($request->product_id as $key => $product) {
+            $result[] = array(
+                "product_id"=>$request->product_id[$key],
+                "product_type_id"=>$request->product_type_id[$key],
+                "packages"=>$request->packages[$key]
+            );
+        }
+
+        $gathering->gatheringDetails()->createMany($result);
+        return redirect()->route('gatherings.index');
     }
 
     /**
