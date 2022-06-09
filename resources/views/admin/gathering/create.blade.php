@@ -52,11 +52,11 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            {{-- <td scope="row"></td>
+                        {{-- <tr>
+                            <td scope="row"></td>
                             <td></td>
-                            <td></td> --}}
-                        </tr>
+                            <td></td>
+                        </tr> --}}
                     </tbody>
                 </table>
             </div>
@@ -80,7 +80,7 @@
                     <div class="mb-3">
                         <label for="product_id" class="form-label">{{ __('Product') }}</label>
                         <select class="form-select select2-product" name="product_id" id="product_id" data-placeholder="{{ __('Choose the product') }}">
-                            <option value="">{{ __('Select a Product') }}</option>
+                            <option value="select" selected disabled>{{ __('Select a Product') }}</option>
                             @foreach ($products as $product)
                                 <option value="{{ $product->id }}" data-type="{{ json_encode($product->productTypes) }}">{{ $product->name }}</option>
                             @endforeach
@@ -91,7 +91,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
-                        <select class="form-select select2-brand" name="product_type_id" id="product_type_id"  data-placeholder="{{ __('Choose the brand') }}">
+                        <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
                             {{-- <option value=""></option> --}}
                         </select>
                         @error('brand_id')
@@ -115,7 +115,7 @@
 @push('scripts')
     <script>
         $('select[name=product_id]').on('change',function() {
-            $('select[name=product_type_id]').html('<option value="">@lang('Select a type of product')</option>');
+            $('select[name=product_type_id]').html('<option value="" selected disabled>{{ __("Select a type of product") }}</option>');
             var productType = $('select[name=product_id] :selected').data('type');
             var html = '';
             productType.forEach(function myFunction(item, index) {
@@ -123,6 +123,8 @@
             });
             $('select[name=product_type_id]').append(html);
         });
+
+        
 
         $('#addProduct').click(function () { 
             productData = document.getElementById('product_id').value.split('_');
@@ -132,20 +134,29 @@
             productType_id = productTypeData[0];
             productType = $('#product_type_id option:selected').text();
             packages = $('#packages').val();
+            var cont = 1;
             // Validar despues, que no manden campos vacios
-            var fila = '<tr>'+
+            var row = '<tr id="row'+cont+'">'+
                     '<td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>'+
                     '<td><input type="hidden" name="product_type_id[]" value="'+product_type_id+'">'+productType+'</td>'+
                     '<td><input type="hidden" name="packages[]" value="'+packages+'">'+packages+'</td>'+
-                    '<td><button type="button" class="btn btn-danger btn-sm"><i class="fa-solid fa-xmark"></i></button></td>'+
+                    '<td><button type="button" class="btn btn-danger btn-sm" onclick="delete_row('+cont+');"><i class="fa-solid fa-xmark"></i></button></td>'+
                 '</tr>';
-            $('#details').append(fila);
+            cont++;
+            $('#details').append(row);
             clean();
         });
 
         function clean() {
-            $("#packages").val("0");
-            $("#product_id").val(null).trigger("change");
+            $("#product_id").val("select");
+            $("#product_type_id").empty();
+            $("#packages").val("");
+            $("#product_type_id").html('<option value="">{{ __("Select a type of product") }}</option>');
+            // $("#product_type_id").val(null).trigger("change");
+        }
+
+        function delete_row(index) {
+            $("#row"+index).remove();
         }
     </script>
 @endpush
