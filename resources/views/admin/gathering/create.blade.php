@@ -40,25 +40,50 @@
         </div>
         <div class="card mb-3">
             <div class="card-body">
-                <button type="button" class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('Add Product') }}</button>
-                <table class="table" id="details">
-                    <thead>
-                        <tr>
-                            {{-- <th>{{  }}</th> --}}
-                            <th>{{ __('Product') }}</th>
-                            <th>{{ __('Product Type') }}</th>
-                            <th>{{ __('Packages') }}</th>
-                            <th>{{ __('Delete') }}</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {{-- <tr>
-                            <td scope="row"></td>
-                            <td></td>
-                            <td></td>
-                        </tr> --}}
-                    </tbody>
-                </table>
+                <div class="row mb-2">
+                    <div class="col">
+                        <button type="button" class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('Add Product') }}</button>
+                    </div>
+                </div>
+                <div class="table-responsive text-nowrap mb-3">
+                    <table class="table" id="details">
+                        <thead>
+                            <tr>
+                                {{-- <th>{{  }}</th> --}}
+                                <th>{{ __('Product') }}</th>
+                                <th>{{ __('Product Type') }}</th>
+                                <th>{{ __('Packages') }}</th>
+                                <th>{{ __('Weight') }}</th>
+                                <th>{{ __('Delete') }}</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{-- <tr>
+                                <td scope="row"></td>
+                                <td></td>
+                                <td></td>
+                            </tr> --}}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="carton_weight" class="form-label">{{ __('Carton Weight') }}</label>
+                        <input type="text" class="form-control" name="" id="carton_weight" disabled>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="plastic_weight" class="form-label">{{ __('Plastic Weight') }}</label>
+                        <input type="text" class="form-control" name="" id="plastic_weight" disabled>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="paper_weight" class="form-label">{{ __('Paper Weight') }}</label>
+                        <input type="text" class="form-control" name="" id="paper_weight" disabled>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="overall_weight" class="form-label">{{ __('Overall Weight') }}</label>
+                        <input type="text" class="form-control" name="overall_weight" id="overall_weight" disabled>
+                    </div>
+                </div>
             </div>
         </div>
         <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
@@ -101,6 +126,16 @@
                     <div class="mb-3">
                         <label for="packages" class="form-label">{{ __('Packages') }}</label>
                         <input type="number" class="form-control" name="packages" id="packages" min="0">
+                        @error('packages')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label for="weight" class="form-label">{{ __('Weight') }}</label>
+                        <input type="number" class="form-control" name="weight" id="weight" min="0">
+                        @error('weight')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -124,7 +159,9 @@
             $('select[name=product_type_id]').append(html);
         });
 
-        
+        var cont = 1;
+        overall_weight = 0;
+        product_weight = [];
 
         $('#addProduct').click(function () { 
             productData = document.getElementById('product_id').value.split('_');
@@ -134,15 +171,24 @@
             product_type_id = productTypeData[0];
             productType = $('#product_type_id option:selected').text();
             packages = $('#packages').val();
-            var cont = 1;
+            weight = $('#weight').val();
+            // var cont = 1;
+            // overall_weight = 0;
+            // product_weight = [];
+            product_weight[cont] = parseInt(weight);
+            overall_weight = overall_weight + product_weight[cont];
+            console.log(overall_weight);
             // Validar despues, que no manden campos vacios
             var row = '<tr id="row'+cont+'">'+
                     '<td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>'+
                     '<td><input type="hidden" name="product_type_id[]" value="'+product_type_id+'">'+productType+'</td>'+
                     '<td><input type="hidden" name="packages[]" value="'+packages+'">'+packages+'</td>'+
+                    '<td><input type="hidden" name="weight[]" value="'+weight+'">'+weight+'</td>'+
                     '<td><button type="button" class="btn btn-danger btn-sm" onclick="delete_row('+cont+');"><i class="fa-solid fa-xmark"></i></button></td>'+
                 '</tr>';
             cont++;
+
+            $('#overall_weight').val(overall_weight);
             $('#details').append(row);
             clean();
         });
@@ -151,11 +197,13 @@
             $("#product_id").val("select");
             $("#product_type_id").empty();
             $("#packages").val("");
+            $("#weight").val("");
             $("#product_type_id").html('<option value="">{{ __("Select a type of product") }}</option>');
-            // $("#product_type_id").val(null).trigger("change");
         }
 
         function delete_row(index) {
+            overall_weight = overall_weight - product_weight[index];
+            $('#overall_weight').val(overall_weight);
             $("#row"+index).remove();
         }
     </script>

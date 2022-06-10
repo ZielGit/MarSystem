@@ -19,6 +19,7 @@ return new class extends Migration
             $table->foreignId('product_id')->constrained();
             $table->foreignId('product_type_id')->constrained();
             $table->integer('packages');
+            $table->integer('weight');
             $table->timestamps();
         });
     }

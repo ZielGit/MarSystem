@@ -50,7 +50,8 @@ class GatheringController extends Controller
             $result[] = array(
                 "product_id"=>$request->product_id[$key],
                 "product_type_id"=>$request->product_type_id[$key],
-                "packages"=>$request->packages[$key]
+                "packages"=>$request->packages[$key],
+                "weight"=>$request->weight[$key]
             );
         }
 

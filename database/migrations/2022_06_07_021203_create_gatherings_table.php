@@ -19,7 +19,10 @@ return new class extends Migration
             $table->foreignId('provider_id')->constrained();
             $table->time('start_time');
             $table->time('end_time');
-            $table->integer('weight');
+            $table->integer('carton_weight');
+            $table->integer('plastic_weight');
+            $table->integer('paper_weight');
+            $table->integer('overall_weight');
             $table->timestamps();
         });
     }

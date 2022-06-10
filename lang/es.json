@@ -469,5 +469,10 @@
     "":"",
     "Add Product":"Añadir Producto",
     "Select a type of product":"Seleccione un tipo de producto",
-    "Packages":"Paquetes"
+    "Packages":"Paquetes",
+    "Weight":"Peso",
+    "Carton Weight":"Peso de Cartón",
+    "Plastic Weight":"Peso de Plástico",
+    "Paper Weight":"Peso de Papel",
+    "Overall Weight":"Peso Total"
 }
