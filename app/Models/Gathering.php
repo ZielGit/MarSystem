@@ -10,8 +10,14 @@ class Gathering extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'provider_id', 'start_time', 'end_time', 'weight'
+        'user_id', 'provider_id', 'start_time', 'end_time', 'carton_weight', 'plastic_weight', 'paper_weight', 'overall_weight'
     ];
+
+    public function provider()
+    {
+        return $this->belongsTo(Provider::class);
+    }
+
 
     public function gatheringDetails()
     {

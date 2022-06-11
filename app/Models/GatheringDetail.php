@@ -10,7 +10,7 @@ class GatheringDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'gathering_id', 'product_id', 'product_type_id', 'packages'
+        'gathering_id', 'product_id', 'product_type_id', 'packages', 'weight'
     ];
 
     public function gathering()

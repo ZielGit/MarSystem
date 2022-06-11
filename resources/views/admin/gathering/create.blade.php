@@ -39,17 +39,21 @@
             </div>
         </div>
         <div class="card mb-3">
-            <div class="card-body">
-                <div class="row mb-2">
-                    <div class="col">
+            <h5 class="card-header">
+                <div class="row">
+                    <div class="col-md-6 mt-2">
+                        {{ __('Gathering of Products') }}
+                    </div>
+                    <div class="col-md-6">
                         <button type="button" class="btn btn-dark float-end" data-bs-toggle="modal" data-bs-target="#productModal">{{ __('Add Product') }}</button>
                     </div>
                 </div>
+            </h5>
+            <div class="card-body">
                 <div class="table-responsive text-nowrap mb-3">
                     <table class="table" id="details">
                         <thead>
                             <tr>
-                                {{-- <th>{{  }}</th> --}}
                                 <th>{{ __('Product') }}</th>
                                 <th>{{ __('Product Type') }}</th>
                                 <th>{{ __('Packages') }}</th>
@@ -58,30 +62,25 @@
                             </tr>
                         </thead>
                         <tbody>
-                            {{-- <tr>
-                                <td scope="row"></td>
-                                <td></td>
-                                <td></td>
-                            </tr> --}}
                         </tbody>
                     </table>
                 </div>
                 <div class="row">
                     <div class="col-md-3">
                         <label for="carton_weight" class="form-label">{{ __('Carton Weight') }}</label>
-                        <input type="number" class="form-control" name="carton_weight" id="carton_weight" disabled>
+                        <input type="number" class="form-control" name="carton_weight" id="carton_weight" readonly>
                     </div>
                     <div class="col-md-3">
                         <label for="plastic_weight" class="form-label">{{ __('Plastic Weight') }}</label>
-                        <input type="text" class="form-control" name="plastic_weight" id="plastic_weight" disabled>
+                        <input type="text" class="form-control" name="plastic_weight" id="plastic_weight" readonly>
                     </div>
                     <div class="col-md-3">
                         <label for="paper_weight" class="form-label">{{ __('Paper Weight') }}</label>
-                        <input type="text" class="form-control" name="paper_weight" id="paper_weight" disabled>
+                        <input type="text" class="form-control" name="paper_weight" id="paper_weight" readonly>
                     </div>
                     <div class="col-md-3">
                         <label for="overall_weight" class="form-label">{{ __('Overall Weight') }}</label>
-                        <input type="text" class="form-control" name="overall_weight" id="overall_weight" disabled>
+                        <input type="text" class="form-control" name="overall_weight" id="overall_weight" readonly>
                     </div>
                 </div>
             </div>
@@ -117,7 +116,6 @@
                     <div class="mb-3">
                         <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
                         <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
-                            {{-- <option value=""></option> --}}
                         </select>
                         @error('brand_id')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>

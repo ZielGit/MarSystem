@@ -18,7 +18,9 @@
                     <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
-                            {{-- <th>{{ __('Name') }}</th> --}}
+                            <th>{{ __('Provider') }}</th>
+                            <th>{{ __('Overall Weight') }}</th>
+                            <th>{{ __('Date') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
@@ -26,10 +28,12 @@
                         @foreach ($gatherings as $gathering)
                             <tr>
                                 <td>{{ $gathering->id }}</td>
-                                {{-- <td>{{ $gathering->name }}</td> --}}
+                                <td>{{ $gathering->provider->name }}</td>
+                                <td>{{ $gathering->overall_weight }} Kg</td>
+                                <td>{{ Carbon\Carbon::parse($gathering->created_at)->format('d-m-Y') }}</td>
                                 <td>
-                                    <a href="{{ route('gatherings.show', $gathering->id) }}" class="btn btn-info">{{ __('Show') }}</a>
-                                    <a href="{{ route('gatherings.edit', $gathering->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
+                                    <a href="{{ route('gatherings.show', $gathering->id) }}" class="btn btn-info">{{ __('Details') }}</a>
+                                    {{-- <a href="{{ route('gatherings.edit', $gathering->id) }}" class="btn btn-warning">{{ __('Edit') }}</a> --}}
                                     {{-- <form action="{{ route('gatherings.destroy', $gathering->id) }}" class="d-inline" method="post">
                                         @csrf
                                         @method('delete')
