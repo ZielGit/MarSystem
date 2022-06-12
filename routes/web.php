@@ -33,6 +33,7 @@ Route::resource('gatherings', GatheringController::class)->names('gatherings');
 
 Route::get('search-dni', [UserController::class, 'search_dni'])->name('search.dni');
 Route::get('search-ruc', [ProviderController::class, 'search_ruc'])->name('search.ruc');
+Route::get('search', [CustomerController::class, 'search'])->name('search');
 
 // Route::middleware([
 //     'auth:sanctum',

@@ -10,7 +10,27 @@
                 @csrf
                 <div class="row">
                     <div class="mb-3 col-md-6">
-                        <label for="name" class="form-label">{{ __('Name') }}</label>
+                        <label for="document_type" class="form-label">{{ __('Document Type') }}</label>
+                        <select class="form-control" name="document_type" id="document_type">
+                            <option value="RUC">{{ __('RUC') }}</option>
+                            <option value="DNI">{{ __('DNI') }}</option>
+                        </select>
+                        @error('document_type')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="document_number" class="form-label">{{ __('Document Number') }}</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="document_number" id="document_number" min="0" value="{{ old('document_number') }}" aria-describedby="buttonSearch"/>
+                            <button class="btn btn-warning" type="button" id="buttonSearch">{{ __('Search') }}</button>
+                        </div>
+                        @error('document_number')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="name" class="form-label">{{ __('Name - Business Name') }}</label>
                         <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                         @error('name')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
@@ -31,23 +51,6 @@
                         <input type="email" class="form-control" name="email" id="email" value="{{ old('email') }}" aria-describedby="emailHelp">
                         <div id="emailHelp" class="form-text text-muted">{{ __('This is an optional field') }}</div>
                         @error('email')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3 col-md-6">
-                        <label for="document_type" class="form-label">{{ __('Document Type') }}</label>
-                        <select class="form-control" name="document_type" id="document_type">
-                            <option value="RUC">{{ __('RUC') }}</option>
-                            <option value="DNI">{{ __('DNI') }}</option>
-                        </select>
-                        @error('document_type')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3 col-md-6">
-                        <label for="document_number" class="form-label">{{ __('Document Number') }}</label>
-                        <input type="number" class="form-control" name="document_number" id="document_number" min="0" value="{{ old('document_number') }}">
-                        @error('document_number')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
@@ -75,3 +78,26 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        "use strict"
+        
+        $('#buttonSearch').click(function(){
+            var document_type = $('#document_type');
+            var document_number = $('#document_number');
+            $.ajax({
+                url: "{{ route('search') }}",
+                method: 'GET',
+                data: {
+                    document_type: document_type.val(),
+                    document_number: document_number.val(),
+                },
+                dataType: 'json',
+                success:function(data){
+                    $('#name').val(data.nombre);
+                }
+            });
+        });
+    </script>
+@endpush
