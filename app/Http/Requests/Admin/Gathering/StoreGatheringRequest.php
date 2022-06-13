@@ -24,7 +24,14 @@ class StoreGatheringRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            // 'user_id' => 'exists:users,id',
+            'provider_id' => 'required|exists:providers,id',
+            'start_time' => 'required|date_format:H:i',
+            'end_time' => 'required|date_format:H:i',
+            'carton_weight' => 'required|numeric',
+            'plastic_weight' => 'required|numeric',
+            'paper_weight' => 'required|numeric',
+            'overall_weight' => 'required|numeric'
         ];
     }
 }

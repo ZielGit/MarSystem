@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\ProductType\StoreProductTypeRequest;
+use App\Http\Requests\Admin\ProductType\UpdateProductTypeRequest;
 use App\Models\Product;
 use App\Models\ProductType;
 use Illuminate\Http\Request;
@@ -37,13 +39,8 @@ class ProductTypeController extends Controller
      * @param  \App\Http\Requests\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreProductTypeRequest $request)
     {
-        $request->validate([
-            'name' => 'required|string|unique:product_types',
-            'product_id' => 'required|exists:products,id'
-        ]);
-
         ProductType::create($request->all());
         return redirect()->route('product.types.index');
     }
@@ -78,13 +75,8 @@ class ProductTypeController extends Controller
      * @param  \App\Models\ProductType  $product_type
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ProductType $product_type)
+    public function update(UpdateProductTypeRequest $request, ProductType $product_type)
     {
-        $request->validate([
-            'name' => 'required|string|unique:product_types,name,'.$product_type->id,
-            'product_id' => 'required|exists:products,id'
-        ]);
-
         $product_type->update($request->all());
         return redirect()->route('product.types.index');
     }
