@@ -475,5 +475,7 @@
     "Carton Weight":"Peso de Cartón",
     "Plastic Weight":"Peso de Plástico",
     "Paper Weight":"Peso de Papel",
-    "Overall Weight":"Peso Total"
+    "Overall Weight":"Peso Total",
+    "Operator":"Operario",
+    "Gathering Details":"Detalles del Acopio"
 }

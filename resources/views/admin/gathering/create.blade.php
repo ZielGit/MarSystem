@@ -11,8 +11,8 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="provider_id" class="form-label">{{ __('Provider') }}</label>
-                        <select class="form-control select2-provider" name="provider_id" id="provider_id">
-                            <option value="" selected disabled>{{ __('Select a provider') }}</option>
+                        <select class="form-control select2-provider" name="provider_id" id="provider_id" data-placeholder="{{ __('Select a provider') }}">
+                            <option value=""></option> {{-- Para el placeholder --}}
                             @foreach ($providers as $provider)
                                 <option value="{{ $provider->id }}">{{ $provider->name }}</option>
                             @endforeach
@@ -155,7 +155,8 @@
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script>
         $(".select2-provider").select2({
-            theme: "bootstrap-5"
+            theme: "bootstrap-5",
+            placeholder: $( this ).data( 'placeholder' ),
         });
 
         $('select[name=product_id]').on('change',function() {

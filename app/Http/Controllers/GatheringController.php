@@ -67,7 +67,13 @@ class GatheringController extends Controller
      */
     public function show(Gathering $gathering)
     {
-        //
+        $gatheringDetails = $gathering->gatheringDetails;
+
+        // foreach ($gatheringDetails as $gatheringDetail) {
+        //     # code...
+        // }
+
+        return view('admin.gathering.show', compact('gathering', 'gatheringDetails'));
     }
 
     /**

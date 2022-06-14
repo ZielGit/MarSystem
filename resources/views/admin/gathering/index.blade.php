@@ -18,6 +18,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
+                            <th>{{ __('Operator') }}</th>
                             <th>{{ __('Provider') }}</th>
                             <th>{{ __('Overall Weight') }}</th>
                             <th>{{ __('Date') }}</th>
@@ -28,6 +29,7 @@
                         @foreach ($gatherings as $gathering)
                             <tr>
                                 <td>{{ $gathering->id }}</td>
+                                <td>{{ $gathering->user->name }}</td>
                                 <td>{{ $gathering->provider->name }}</td>
                                 <td>{{ $gathering->overall_weight }} Kg</td>
                                 <td>{{ Carbon\Carbon::parse($gathering->created_at)->format('d-m-Y') }}</td>
