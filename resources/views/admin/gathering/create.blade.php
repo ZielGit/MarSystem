@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-md-6">
                         <label for="provider_id" class="form-label">{{ __('Provider') }}</label>
-                        <select class="form-control" name="provider_id" id="provider_id">
+                        <select class="form-control select2-provider" name="provider_id" id="provider_id">
                             <option value="" selected disabled>{{ __('Select a provider') }}</option>
                             @foreach ($providers as $provider)
                                 <option value="{{ $provider->id }}">{{ $provider->name }}</option>
@@ -145,9 +145,19 @@
     </div>
 @endpush
 
+@push('styles')
+    <link rel="stylesheet" href="{{ asset('plugins/select2/select2.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('plugins/select2/select2-bootstrap-5-theme.min.css') }}">
+@endpush
+
 @push('scripts')
+    <script src="{{ asset('plugins/select2/select2.min.js') }}"></script>
     <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script>
+        $(".select2-provider").select2({
+            theme: "bootstrap-5"
+        });
+
         $('select[name=product_id]').on('change',function() {
             $('select[name=product_type_id]').html('<option value="" selected disabled>{{ __("Select a type of product") }}</option>');
             var productType = $('select[name=product_id] :selected').data('type');

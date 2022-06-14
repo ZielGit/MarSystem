@@ -33,8 +33,9 @@
 
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
-        <!-- Page CSS -->
+        @stack('styles')
 
+        <!-- Scripts -->
         <!-- Helpers -->
         <script src="{{ asset('sneat/assets/vendor/js/helpers.js') }}"></script>
 
