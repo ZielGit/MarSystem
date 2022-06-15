@@ -20,7 +20,7 @@
                     <p></p>
                 </div>
                 <div class="col-md-4 text-center">
-                    <label for="" class="form-label">{{ __('Date') }}</label>
+                    <label class="form-label">{{ __('Date') }}</label>
                     <p>{{ Carbon\Carbon::parse($gathering->created_at)->format('d-m-Y') }}</p>
                 </div>
                 <div class="col-md-4 text-center">
@@ -34,7 +34,7 @@
             </div>
             <hr>
             <h5 class="card-title text-center">{{ __('Products') }}</h5>
-            <div class="table-responsive text-nowrap">
+            <div class="table-responsive text-nowrap mb-3">
                 <table class="table">
                     <thead>
                         <tr>
@@ -44,17 +44,31 @@
                             <th>{{ __('Weight') }}</th>
                         </tr>
                     </thead>
-                    <tbody class="table-border-bottom-0">
+                    <tbody>
                         @foreach ($gatheringDetails as $gatheringDetail)
                             <tr>
                                 <td>{{ $gatheringDetail->product->name }}</td>
                                 <td>{{ $gatheringDetail->productType->name }}</td>
                                 <td>{{ $gatheringDetail->packages }}</td>
-                                <td>{{ $gatheringDetail->weight }}</td>
+                                <td>{{ $gatheringDetail->weight }} Kg</td>
                             </tr>
                         @endforeach
                     </tbody>
                 </table>
+            </div>
+            <div class="row">
+                <div class="col-md-3 text-center">
+                    <h6>{{ __('Carton Weight') }}: <span>{{ $gathering->carton_weight }} Kg</span></h6>
+                </div>
+                <div class="col-md-3 text-center">
+                    <h6>{{ __('Plastic Weight') }}: <span>{{ $gathering->plastic_weight }} Kg</span></h6> 
+                </div>
+                <div class="col-md-3 text-center">
+                    <h6>{{ __('Paper Weight') }}: <span>{{ $gathering->paper_weight }} Kg</span></h6> 
+                </div>
+                <div class="col-md-3 text-center">
+                    <h6>{{ __('Overall Weight') }}: <span>{{ $gathering->overall_weight }} Kg</span></h6>
+                </div>
             </div>
         </div>
     </div>

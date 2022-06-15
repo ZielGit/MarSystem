@@ -194,7 +194,7 @@
                     '<td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>'+
                     '<td><input type="hidden" name="product_type_id[]" value="'+product_type_id+'">'+productType+'</td>'+
                     '<td><input type="hidden" name="packages[]" value="'+packages+'">'+packages+'</td>'+
-                    '<td><input type="hidden" name="weight[]" value="'+weight+'">'+weight+'</td>'+
+                    '<td><input type="hidden" name="weight[]" value="'+weight+'">'+weight+' Kg</td>'+
                     '<td><button type="button" class="btn btn-danger btn-sm" onclick="delete_row('+cont+');"><i class="fa-solid fa-xmark"></i></button></td>'+
                 '</tr>';
                 cont++;
