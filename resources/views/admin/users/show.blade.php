@@ -10,10 +10,10 @@
                     <div class="row">
                         <div class="col-lg-4">
                             <div class="border-bottom text-center pb-4">
-                                @if (Auth::user()->profile_photo_path)
-                                    <img class="mx-auto rounded mb-2" src="/storage/{{ Auth::user()->profile_photo_path }}" alt="{{ Auth::user()->name }}" width="140" />
+                                @if ($user->profile_photo_path)
+                                    <img class="mx-auto rounded mb-2" src="/storage/{{ $user->profile_photo_path }}" alt="{{ Auth::user()->name }}" width="140" />
                                 @else
-                                    <img class="mx-auto rounded mb-2" src="{{ Auth::user()->profile_photo_url }}" alt="{{ Auth::user()->name }}" width="140" />
+                                    <img class="mx-auto rounded mb-2" src="{{ $user->profile_photo_url }}" alt="{{ Auth::user()->name }}" width="140" />
                                 @endif
                                 <h3>{{ $user->name }}</h3>
                             </div>

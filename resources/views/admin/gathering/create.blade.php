@@ -130,7 +130,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="weight" class="form-label">{{ __('Weight') }}</label>
-                        <input type="number" class="form-control" name="weight" id="weight" min="0">
+                        <input type="number" class="form-control" name="weight" id="weight" min="0" readonly>
                         @error('weight')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
@@ -167,6 +167,11 @@
                 html += `<option value="${item.id}">${item.name}</option>`
             });
             $('select[name=product_type_id]').append(html);
+        });
+
+        $("#packages").change(function () { 
+            packages = $("#packages").val();
+            $("#weight").val(packages*40);
         });
 
         var cont = 1;
