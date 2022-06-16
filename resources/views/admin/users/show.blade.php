@@ -11,9 +11,9 @@
                         <div class="col-lg-4">
                             <div class="border-bottom text-center pb-4">
                                 @if ($user->profile_photo_path)
-                                    <img class="mx-auto rounded mb-2" src="/storage/{{ $user->profile_photo_path }}" alt="{{ Auth::user()->name }}" width="140" />
+                                    <img class="mx-auto rounded mb-2" src="/storage/{{ $user->profile_photo_path }}" alt="{{ $user->name }}" width="140" />
                                 @else
-                                    <img class="mx-auto rounded mb-2" src="{{ $user->profile_photo_url }}" alt="{{ Auth::user()->name }}" width="140" />
+                                    <img class="mx-auto rounded mb-2" src="{{ $user->profile_photo_url }}" alt="{{ $user->name }}" width="140" />
                                 @endif
                                 <h3>{{ $user->name }}</h3>
                             </div>
@@ -52,6 +52,9 @@
                                                 @endforeach
                                             </p>
                                             <hr>
+                                            <strong><i class="fas fa-user-clock me-1"></i> {{ __('Shift') }}</strong>
+                                            <p class="text-muted">{{ __($user->shift) }}</p>
+                                            <hr>
                                         </div>
                                         <div class="col-md-6">
                                             <strong><i class="fas fa-address-card me-1"></i> {{ __('DNI') }}</strong>
@@ -60,10 +63,8 @@
                                             <strong><i class="fas fa-envelope me-1"></i> {{ __('Email') }}</strong>
                                             <p class="text-muted">{{ $user->email }}</p>
                                             <hr>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <strong><i class="fas fa-user-clock me-1"></i> {{ __('Shift') }}</strong>
-                                            <p class="text-muted">{{ __($user->shift) }}</p>
+                                            <strong><i class="fas fa-mobile-alt me-1"></i> {{ __('Phone') }}</strong>
+                                            <p class="text-muted">{{ $user->phone }}</p>
                                             <hr>
                                         </div>
                                     </div>

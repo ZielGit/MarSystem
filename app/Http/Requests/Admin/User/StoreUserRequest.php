@@ -28,6 +28,7 @@ class StoreUserRequest extends FormRequest
             'dni' => 'required|string|max:8|min:8|unique:users,dni',
             'email' => 'required|email|unique:users,email',
             'password' => 'required',
+            'phone' => 'nullable|string|unique:users,phone',
             'shift' => 'required|in:complete,morning,afternoon',
             'business' => 'required|in:main,branch_office',
             'roles.*' => 'integer',

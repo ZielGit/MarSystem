@@ -41,6 +41,14 @@
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
+                        <label for="phone" class="form-label">{{ __('Phone') }}</label>
+                        <input type="tel" class="form-control" name="phone" id="phone" value="{{ old('phone') }}"  aria-describedby="phoneHelp">
+                        <div id="phoneHelp" class="form-text text-muted">{{ __('This is an optional field') }}</div>
+                        @error('phone')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
                         <label for="shift" class="form-label">{{ __('Shift') }}</label>
                         <select class="form-control" name="shift" id="shift">
                             <option value="" disabled selected>{{ __('Select a shift') }}</option>

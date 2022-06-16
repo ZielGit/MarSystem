@@ -27,6 +27,7 @@ class UpdateUserRequest extends FormRequest
             'name' => 'required|string',
             'dni' => 'required|string|max:8|min:8|unique:users,dni,'.$this->route('user')->id,
             'email' => 'required|email|unique:users,email,'.$this->route('user')->id,
+            'phone' => 'nullable|string|unique:users,phone,'.$this->route('user')->id,
             'shift' => 'required|in:complete,morning,afternoon',
             'business' => 'required|in:main,branch_office',
             'roles.*' => 'integer',
