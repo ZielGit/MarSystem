@@ -480,5 +480,13 @@
     "Gathering Details":"Detalles del Acopio",
     "About the user":"Sobre el usuario",
     "User Information":"Información del Usuario",
-    "complete":"Completo"
+    "complete":"Completo",
+    "Drivers":"Conductores",
+    "Driver List":"Lista de Conductores",
+    "Create New Driver":"Crear Nuevo Conductor",
+    "Create Driver":"Crear Conductor",
+    "Travel List":"Lista de Viajes",
+    "Travels":"Viajes",
+    "Create New Travel":"Crear Nuevo Viaje",
+    "Create Trip":"Crear Viaje"
 }

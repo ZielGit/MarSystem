@@ -60,7 +60,17 @@
         </x-jet-nav-link>
         <x-jet-nav-link :active="request()->routeIs('gatherings.*')">
             <a href="{{ route('gatherings.index') }}" class="menu-link">
-                <i class="menu-icon fa-solid fa-people-carry-box"></i> {{ __('Gathering') }}
+                <i class="tf-icons fa-solid fa-people-carry-box me-2"></i> {{ __('Gathering') }}
+            </a>
+        </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('drivers.*')">
+            <a href="{{ route('drivers.index') }}" class="menu-link">
+                <i class="fa-solid fa-users me-2"></i> {{ __('Drivers') }}
+            </a>
+        </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('travels.*')">
+            <a href="{{ route('travels.index') }}" class="menu-link">
+                <i class="fa-solid fa-truck-fast me-2"></i> {{ __('Travels') }}
             </a>
         </x-jet-nav-link>
     </ul>
