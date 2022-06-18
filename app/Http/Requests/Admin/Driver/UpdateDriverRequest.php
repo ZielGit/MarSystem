@@ -13,7 +13,7 @@ class UpdateDriverRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,10 @@ class UpdateDriverRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'name' => 'required|string|unique:drivers,name,'.$this->route('driver')->id,
+            'phone' => 'required|string|unique:drivers,phone,'.$this->route('driver')->id,
+            'license_plate' => 'required|string|unique:drivers,license_plate,'.$this->route('driver')->id,
+            'freighter' => 'required|string'
         ];
     }
 }

@@ -19,6 +19,8 @@
                         <tr>
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('Name') }}</th>
+                            <th>{{ __('Phone') }}</th>
+                            <th>{{ __('Freighter') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
@@ -27,8 +29,10 @@
                             <tr>
                                 <td>{{ $driver->id }}</td>
                                 <td>{{ $driver->name }}</td>
+                                <td>{{ $driver->phone }}</td>
+                                <td>{{ $driver->freighter }}</td>
                                 <td>
-                                    <a href="{{ route('drivers.show', $driver->id) }}" class="btn btn-info">{{ __('Show') }}</a>
+                                    {{-- <a href="{{ route('drivers.show', $driver->id) }}" class="btn btn-info">{{ __('Show') }}</a> --}}
                                     <a href="{{ route('drivers.edit', $driver->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
                                     {{-- <form action="{{ route('drivers.destroy', $driver->id) }}" class="d-inline" method="post">
                                         @csrf

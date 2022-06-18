@@ -37,7 +37,8 @@ class DriverController extends Controller
      */
     public function store(StoreDriverRequest $request)
     {
-        //
+        Driver::create($request->all());
+        return redirect()->route('drivers.index');
     }
 
     /**
@@ -59,7 +60,7 @@ class DriverController extends Controller
      */
     public function edit(Driver $driver)
     {
-        //
+        return view('admin.drivers.edit', compact('driver'));
     }
 
     /**
@@ -71,7 +72,8 @@ class DriverController extends Controller
      */
     public function update(UpdateDriverRequest $request, Driver $driver)
     {
-        //
+        $driver->update($request->all());
+        return redirect()->route('drivers.index');
     }
 
     /**
