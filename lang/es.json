@@ -491,5 +491,13 @@
     "Create Trip":"Crear Viaje",
     "License Plate":"Placa",
     "Freighter":"Fletero",
-    "Edit Driver":"Editar Conductor"
+    "Edit Driver":"Editar Conductor",
+    "Driver":"Conductor",
+    "Select a driver":"Selecciona un conductor",
+    "Departure Date":"Fecha de Salida",
+    "Arrival Date":"Fecha de Llegada",
+    "Destinations":"Destinos",
+    "Add Destination":"Agregar Destino",
+    "Customer":"Cliente",
+    "Total Price":"Precio Total"
 }

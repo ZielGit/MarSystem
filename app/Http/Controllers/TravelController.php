@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Travel;
 use App\Http\Requests\Admin\Travel\StoreTravelRequest;
 use App\Http\Requests\Admin\Travel\UpdateTravelRequest;
+use App\Models\Driver;
 
 class TravelController extends Controller
 {
@@ -26,7 +27,8 @@ class TravelController extends Controller
      */
     public function create()
     {
-        return view('admin.travel.create');
+        $drivers = Driver::get();
+        return view('admin.travel.create', compact('drivers'));
     }
 
     /**
@@ -37,7 +39,8 @@ class TravelController extends Controller
      */
     public function store(StoreTravelRequest $request)
     {
-        //
+        Travel::create($request->all());
+        return redirect()->route('travels.index');
     }
 
     /**
