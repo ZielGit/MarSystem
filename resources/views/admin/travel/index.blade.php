@@ -18,7 +18,7 @@
                     <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
-                            <th>{{ __('Name') }}</th>
+                            <th>{{ __('Driver') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
@@ -26,9 +26,9 @@
                         @foreach ($travels as $travel)
                             <tr>
                                 <td>{{ $travel->id }}</td>
-                                <td>{{ $travel->name }}</td>
+                                <td>{{ $travel->driver->name }}</td>
                                 <td>
-                                    <a href="{{ route('travels.show', $travel->id) }}" class="btn btn-info">{{ __('Show') }}</a>
+                                    <a href="{{ route('travels.show', $travel->id) }}" class="btn btn-info">{{ __('Details') }}</a>
                                     <a href="{{ route('travels.edit', $travel->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
                                     {{-- <form action="{{ route('travels.destroy', $travel->id) }}" class="d-inline" method="post">
                                         @csrf

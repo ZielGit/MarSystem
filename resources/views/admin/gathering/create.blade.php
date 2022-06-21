@@ -103,7 +103,7 @@
                 <div class="modal-body">
                     <div class="mb-3">
                         <label for="product_id" class="form-label">{{ __('Product') }}</label>
-                        <select class="form-select select2-product" name="product_id" id="product_id" data-placeholder="{{ __('Choose the product') }}">
+                        <select class="form-select" name="product_id" id="product_id">
                             <option value="select" selected disabled>{{ __('Select a Product') }}</option>
                             @foreach ($products as $product)
                                 <option value="{{ $product->id }}" data-type="{{ json_encode($product->productTypes) }}">{{ $product->name }}</option>
@@ -117,7 +117,7 @@
                         <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
                         <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
                         </select>
-                        @error('brand_id')
+                        @error('product_type_id')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>

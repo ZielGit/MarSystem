@@ -26,8 +26,8 @@ class StoreGatheringRequest extends FormRequest
         return [
             // 'user_id' => 'exists:users,id',
             'provider_id' => 'required|exists:providers,id',
-            'start_time' => 'required|date_format:H:i',
-            'end_time' => 'required|date_format:H:i',
+            'start_time' => 'required|date_format:H:i|before:end_time',
+            'end_time' => 'required|date_format:H:i|after:start_time',
             'carton_weight' => 'required|numeric',
             'plastic_weight' => 'required|numeric',
             'paper_weight' => 'required|numeric',

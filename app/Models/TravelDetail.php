@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class TravelDetail extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'travel_id', 'customer_id', 'product_id', 'product_type_id', 'weight', 'total_price'
+    ];
 }
