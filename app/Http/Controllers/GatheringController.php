@@ -48,10 +48,10 @@ class GatheringController extends Controller
 
         foreach ($request->product_id as $key => $product) {
             $result[] = array(
-                "product_id"=>$request->product_id[$key],
-                "product_type_id"=>$request->product_type_id[$key],
-                "packages"=>$request->packages[$key],
-                "weight"=>$request->weight[$key]
+                "product_id" => $request->product_id[$key],
+                "product_type_id" => $request->product_type_id[$key],
+                "packages" => $request->packages[$key],
+                "weight" => $request->weight[$key]
             );
         }
 

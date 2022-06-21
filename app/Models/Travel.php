@@ -17,4 +17,9 @@ class Travel extends Model
     {
         return $this->belongsTo(Driver::class);
     }
+
+    public function travelDetails()
+    {
+        return $this->hasMany(TravelDetail::class);
+    }
 }

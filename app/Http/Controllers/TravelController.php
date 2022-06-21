@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Travel;
 use App\Http\Requests\Admin\Travel\StoreTravelRequest;
 use App\Http\Requests\Admin\Travel\UpdateTravelRequest;
+use App\Models\Customer;
 use App\Models\Driver;
+use App\Models\Product;
 
 class TravelController extends Controller
 {
@@ -28,7 +30,9 @@ class TravelController extends Controller
     public function create()
     {
         $drivers = Driver::get();
-        return view('admin.travel.create', compact('drivers'));
+        $customers = Customer::get();
+        $products = Product::get();
+        return view('admin.travel.create', compact('drivers', 'customers', 'products'));
     }
 
     /**
@@ -39,7 +43,19 @@ class TravelController extends Controller
      */
     public function store(StoreTravelRequest $request)
     {
-        Travel::create($request->all());
+        $travel = Travel::create($request->all());
+
+        foreach ($request->customer_id as $key => $customer) {
+            $result[] = array(
+                'customer_id' => $request->customer_id[$key],
+                'product_id' => $request->product_id[$key],
+                'product_type_id' => $request->product_type_id[$key],
+                'weight' => $request->weight[$key],
+                'total_price' => $request->total_price[$key]
+            );
+        }
+
+        $travel->travelDetails()->createMany($result);
         return redirect()->route('travels.index');
     }
 

@@ -496,8 +496,9 @@
     "Select a driver":"Selecciona un conductor",
     "Departure Date":"Fecha de Salida",
     "Arrival Date":"Fecha de Llegada",
-    "Destinations":"Destinos",
-    "Add Destination":"Agregar Destino",
+    "Deliveries":"Entregas",
+    "Add Delivery":"Agregar Entrega",
     "Customer":"Cliente",
-    "Total Price":"Precio Total"
+    "Total Price":"Precio Total",
+    "Select a customer":"Seleccione un cliente"
 }
