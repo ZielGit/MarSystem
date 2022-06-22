@@ -9,7 +9,7 @@
             <form action="{{ route('travels.store') }}" method="post">
                 @csrf
                 <div class="row">
-                    <div class="mb-3 col-md-6">
+                    <div class="mb-3 col-md-4">
                         <label for="driver_id" class="form-label">{{ __('Driver') }}</label>
                         <select class="form-control" name="driver_id" id="driver_id">
                             <option value="" selected disabled>{{ __('Select a driver') }}</option>
@@ -18,6 +18,13 @@
                             @endforeach
                         </select>
                         @error('driver_id')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3 col-md-2">
+                        <label for="origin" class="form-label">{{ __('Origin') }}</label>
+                        <input type="text" class="form-control" name="origin" id="origin">
+                        @error('origin')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>

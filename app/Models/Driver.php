@@ -10,6 +10,6 @@ class Driver extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'phone', 'license_plate', 'freighter'
+        'name', 'phone', 'license_plate', 'freighter', 'license'
     ];
 }

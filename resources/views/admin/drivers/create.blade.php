@@ -37,6 +37,13 @@
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="license" class="form-label">{{ __('License') }}</label>
+                        <input type="text" class="form-control" name="license" id="license" value="{{ old('license') }}">
+                        @error('license')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
                 </div>
                 <button type="submit" class="btn btn-primary">{{ __('Create') }}</button>
                 <a href="{{ route('drivers.index') }}" class="btn btn-secondary float-end">{{ __('Cancel') }}</a>

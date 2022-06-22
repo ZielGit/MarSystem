@@ -27,7 +27,8 @@ class UpdateDriverRequest extends FormRequest
             'name' => 'required|string|unique:drivers,name,'.$this->route('driver')->id,
             'phone' => 'required|string|unique:drivers,phone,'.$this->route('driver')->id,
             'license_plate' => 'required|string|unique:drivers,license_plate,'.$this->route('driver')->id,
-            'freighter' => 'required|string'
+            'freighter' => 'required|string',
+            'license' => 'required|string|unique:drivers,license,'.$this->route('driver')->id
         ];
     }
 }
