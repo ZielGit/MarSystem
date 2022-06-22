@@ -27,7 +27,8 @@ class StoreDriverRequest extends FormRequest
             'name' => 'required|string|unique:drivers,name',
             'phone' => 'required|string|unique:drivers,phone',
             'license_plate' => 'required|string|unique:drivers,license_plate',
-            'freighter' => 'required|string'
+            'freighter' => 'required|string',
+            'license' => 'required|string|unique:drivers,license'
         ];
     }
 }

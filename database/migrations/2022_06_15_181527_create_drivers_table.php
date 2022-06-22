@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('phone')->unique();
             $table->string('license_plate')->unique();
             $table->string('freighter');
+            $table->string('license')->unique();
             $table->timestamps();
         });
     }
