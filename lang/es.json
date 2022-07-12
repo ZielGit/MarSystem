@@ -502,5 +502,6 @@
     "Add Delivery":"Agregar Entrega",
     "Customer":"Cliente",
     "Total Price":"Precio Total",
-    "Select a customer":"Seleccione un cliente"
+    "Select a customer":"Seleccione un cliente",
+    "Price per Kilo":"Precio por Kilo"
 }

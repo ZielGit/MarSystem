@@ -10,6 +10,6 @@ class TravelDetail extends Model
     use HasFactory;
 
     protected $fillable = [
-        'travel_id', 'customer_id', 'product_id', 'product_type_id', 'weight', 'total_price'
+        'travel_id', 'customer_id', 'product_id', 'product_type_id', 'weight', 'price_kilo', 'total_price'
     ];
 }

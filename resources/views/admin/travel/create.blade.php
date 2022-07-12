@@ -127,6 +127,13 @@
                         @enderror
                     </div>
                     <div class="mb-3">
+                        <label for="price_kilo" class="form-label">{{ __('Price per Kilo') }}</label>
+                        <input type="number" class="form-control" name="price_kilo" id="price_kilo" min="0" step="any">
+                        @error('price_kilo')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3">
                         <label for="total_price" class="form-label">{{ __('Total Price') }}</label>
                         <input type="number" class="form-control" name="total_price" id="total_price" min="0" step="any">
                         @error('total_price')
@@ -169,13 +176,15 @@
             product_type_id = productTypeData[0];
             productType = $('#product_type_id option:selected').text();
             weight = $('#weight').val();
+            price_kilo = $('#price_kilo').val();
             total_price = $('#total_price').val();
-            if (product_id != "select" && product_type_id != "" && weight != "" && total_price != "") {
+            if (product_id != "select" && product_type_id != "" && weight != "" && price_kilo != "" && total_price != "") {
                 var row = '<tr id="row'+cont+'">'+
                     '<td><input type="hidden" name="customer_id[]" value="'+customer_id+'">'+customer+'</td>'+
                     '<td><input type="hidden" name="product_id[]" value="'+product_id+'">'+product+'</td>'+
                     '<td><input type="hidden" name="product_type_id[]" value="'+product_type_id+'">'+productType+'</td>'+
                     '<td><input type="hidden" name="weight[]" value="'+weight+'">'+weight+' Kg</td>'+
+                    '<td><input type="hidden" name="price_kilo[]" value="'+price_kilo+'">'+price_kilo+'</td>'+
                     '<td><input type="hidden" name="total_price[]" value="'+total_price+'">'+total_price+'</td>'+
                     '<td><button type="button" class="btn btn-danger btn-sm" onclick="delete_row('+cont+');"><i class="fa-solid fa-xmark"></i></button></td>'+
                 '</tr>';
