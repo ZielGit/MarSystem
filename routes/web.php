@@ -8,6 +8,7 @@ use App\Http\Controllers\GatheringController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProductTypeController;
 use App\Http\Controllers\ProviderController;
+use App\Http\Controllers\ReleaseController;
 use App\Http\Controllers\TravelController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
@@ -34,6 +35,7 @@ Route::resource('providers', ProviderController::class)->names('providers');
 Route::resource('gatherings', GatheringController::class)->names('gatherings');
 Route::resource('drivers', DriverController::class)->names('drivers');
 Route::resource('travels', TravelController::class)->names('travels');
+Route::resource('releases', ReleaseController::class)->names('releases');
 
 Route::get('search-dni', [UserController::class, 'search_dni'])->name('search.dni');
 Route::get('search-ruc', [ProviderController::class, 'search_ruc'])->name('search.ruc');

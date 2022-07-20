@@ -14,7 +14,8 @@ class ReleaseController extends Controller
      */
     public function index()
     {
-        //
+        $releases = Release::get();
+        return view('admin.release.index', compact('releases'));
     }
 
     /**
