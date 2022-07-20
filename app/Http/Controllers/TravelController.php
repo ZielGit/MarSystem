@@ -51,6 +51,7 @@ class TravelController extends Controller
                 'product_id' => $request->product_id[$key],
                 'product_type_id' => $request->product_type_id[$key],
                 'weight' => $request->weight[$key],
+                'price_kilo' => $request->price_kilo[$key],
                 'total_price' => $request->total_price[$key]
             );
         }
