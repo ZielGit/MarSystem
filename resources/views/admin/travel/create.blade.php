@@ -163,6 +163,19 @@
             $('select[name=product_type_id]').append(html);
         });
 
+        $('#weight, #price_kilo, #product_type_id').change(function () { 
+            if ($('#product_id option:selected').val() == 1 && $('#product_type_id option:selected').val() == 2) {
+                weight = $('#weight').val();
+                price_kilo = $('#price_kilo').val();
+                subtotal = weight * price_kilo;
+                igv = subtotal * 0.18;
+                total = subtotal + igv;
+                detraccion = total * 0.15;
+                efectivo = total - Math.ceil(detraccion);
+                $('#total_price').val(efectivo);
+            }
+        });
+
         var cont = 1;
 
         $('#addDestination').click(function () { 
