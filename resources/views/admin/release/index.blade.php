@@ -18,7 +18,10 @@
                     <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
-                            <th>{{ __('Driver') }}</th>
+                            <th>{{ __('Customer') }}</th>
+                            <th>{{ __('Product Type') }}</th>
+                            <th>{{ __('Quantity Released') }}</th>
+                            <th>{{ __('Date') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
@@ -26,7 +29,10 @@
                         @foreach ($releases as $release)
                             <tr>
                                 <td>{{ $release->id }}</td>
-                                <td>{{ $release->driver->name }}</td>
+                                <td>{{ $release->customer->name }}</td>
+                                <td>{{ $release->productType->name }}</td>
+                                <td>{{ $release->quantity_released }}</td>
+                                <td>{{ $release->date }}</td>
                                 <td>
                                     <a href="{{ route('releases.show', $release->id) }}" class="btn btn-info">{{ __('Details') }}</a>
                                     <a href="{{ route('releases.edit', $release->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>

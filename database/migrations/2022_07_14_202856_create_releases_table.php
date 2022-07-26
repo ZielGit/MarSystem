@@ -17,11 +17,11 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained();
             $table->foreignId('customer_id')->constrained();
-            $table->foreignId('product_id')->constrained();
+            $table->foreignId('product_type_id')->constrained();
             $table->dateTime('date');
-            $table->string('lot');
+            $table->string('lot')->nullable();
             $table->string('quantity_released');
-            $table->text('observations');
+            $table->text('observations')->nullable();
             $table->timestamps();
         });
     }

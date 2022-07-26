@@ -503,5 +503,11 @@
     "Customer":"Cliente",
     "Total Price":"Precio Total",
     "Select a customer":"Seleccione un cliente",
-    "Price per Kilo":"Precio por Kilo"
+    "Price per Kilo":"Precio por Kilo",
+    "Release":"Libración",
+    "Create Release":"Crear Liberación",
+    "Create New Release":"Crear Nueva Liberación",
+    "Lot":"Lote",
+    "Quantity Released":"Cantidad Liberada",
+    "Observations":"Observaciones"
 }

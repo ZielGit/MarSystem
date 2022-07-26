@@ -2,8 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\Admin\Release\StoreReleaseRequest;
+use App\Models\Customer;
+use App\Models\Product;
 use App\Models\Release;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReleaseController extends Controller
 {
@@ -25,7 +30,9 @@ class ReleaseController extends Controller
      */
     public function create()
     {
-        //
+        $customers = Customer::get();
+        $products = Product::get();
+        return view('admin.release.create', compact('customers', 'products'));
     }
 
     /**
@@ -34,9 +41,14 @@ class ReleaseController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreReleaseRequest $request)
     {
-        //
+        Release::create($request->all()+[
+            'user_id'=>Auth::user()->id,
+            'date' => Carbon::now('America/Lima'),
+        ]);
+
+        return redirect()->route('releases.index');
     }
 
     /**
