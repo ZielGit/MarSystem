@@ -73,5 +73,10 @@
                 <i class="fa-solid fa-truck-fast me-2"></i> {{ __('Travels') }}
             </a>
         </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('releases.*')">
+            <a href="{{ route('releases.index') }}" class="menu-link">
+                <i class="fas fa-box-open me-2"></i> {{ __('Release') }}
+            </a>
+        </x-jet-nav-link>
     </ul>
 </aside>
