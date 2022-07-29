@@ -110,9 +110,6 @@
         <script src="{{ asset('sneat/assets/vendor/js/menu.js') }}"></script>
         <!-- endbuild -->
 
-        <!-- Vendors JS -->
-        <script src="{{ asset('sneat/assets/vendor/libs/apex-charts/apexcharts.js') }}"></script>
-
         <!-- Main JS -->
         <script src="{{ asset('sneat/assets/js/main.js') }}"></script>
 
