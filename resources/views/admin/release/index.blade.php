@@ -4,7 +4,7 @@
 <div class="container-xxl flex-grow-1 container-p-y">
     <div class="row">
         <div class="col-lg-6">
-            <h4 class="fw-bold py-3 mb-3">{{ __('Releases') }} </h4>
+            <h4 class="fw-bold py-3 mb-3">{{ __('Release') }} </h4>
         </div>
         <div class="col-lg-6">
             <a href="{{ route('releases.create') }}" class="btn btn-primary float-end mt-2">{{ __('Create New Release') }}</a>

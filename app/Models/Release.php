@@ -10,7 +10,7 @@ class Release extends Model
     use HasFactory;
 
     protected $fillable = [
-        'user_id', 'customer_id', 'product_type_id', 'date', 'lot', 'quantity_released', 'observations'
+        'user_id', 'customer_id', 'product_type_id', 'lot', 'quantity_released', 'observations'
     ];
 
     public function customer()

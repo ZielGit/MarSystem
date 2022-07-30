@@ -6,28 +6,17 @@ use App\Http\Requests\Admin\Release\StoreReleaseRequest;
 use App\Models\Customer;
 use App\Models\Product;
 use App\Models\Release;
-use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class ReleaseController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $releases = Release::get();
         return view('admin.release.index', compact('releases'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $customers = Customer::get();
@@ -35,17 +24,10 @@ class ReleaseController extends Controller
         return view('admin.release.create', compact('customers', 'products'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreReleaseRequest $request)
     {
         Release::create($request->all()+[
             'user_id'=>Auth::user()->id,
-            'date' => Carbon::now('America/Lima'),
         ]);
 
         return redirect()->route('releases.index');

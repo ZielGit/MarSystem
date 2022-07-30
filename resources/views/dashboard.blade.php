@@ -125,7 +125,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-lg-12">
+        <div class="col-lg-12 mb-4">
             <div class="card">
                 <div class="card-header">
                     <div class="card-title">
@@ -134,6 +134,20 @@
                 </div>
                 <div class="card-body">
                     <canvas id="gathering"></canvas>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12 mb-4">
+            <div class="card">
+                <div class="card-header">
+                    <div class="card-title">
+                        <h5 class="m-0 me-2">{{ __('Release of the last 30 days') }}</h5>
+                    </div>
+                </div>
+                <div class="card-body">
+                    <canvas id="release"></canvas>
                 </div>
             </div>
         </div>
@@ -149,22 +163,61 @@
             type: 'bar',
             data: {
                 labels: [
-                    <?php foreach ($dailyGatherings as $dailyGathering) {
-                        $day = $dailyGathering->day;
-                        echo '"'.$day.'",';} 
-                    ?>
+                    @php
+                        foreach ($dailyGatherings as $dailyGathering) {
+                            $day = $dailyGathering->day;
+                            echo '"'.$day.'",';
+                        }
+                    @endphp
+                        
                 ],
                 datasets: [{
                     label: 'Acopios',
                     data: [
-                        <?php
+                        @php
                             foreach ($dailyGatherings as $dailyGathering) {
                                 echo ''.$dailyGathering->total.',';
-                            } 
-                        ?>
+                            }
+                        @endphp
                     ],
                     backgroundColor: 'rgba(231, 231, 255, 0.9)',
                     borderColor: 'rgba(105, 108, 255, 1)',
+                    borderWidth: 2
+                }]
+            },
+            option: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const release = document.getElementById('release');
+        const chartRelease = new Chart(release, {
+            type: 'bar',
+            data: {
+                labels: [
+                    @php
+                        foreach ($dailyReleases as $dailyRelease) {
+                            $day = $dailyRelease->day;
+                            echo '"'.$day.'",';
+                        }
+                    @endphp
+                        
+                ],
+                datasets: [{
+                    label: 'Liberación',
+                    data: [
+                        @php
+                            foreach ($dailyReleases as $dailyRelease) {
+                                echo ''.$dailyRelease->total.',';
+                            }
+                        @endphp
+                    ],
+                    backgroundColor: 'rgba(238, 251, 231, 0.9)',
+                    borderColor: 'rgba(126, 221, 76, 1)',
                     borderWidth: 2
                 }]
             },
