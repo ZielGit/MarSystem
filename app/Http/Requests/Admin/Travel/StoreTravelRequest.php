@@ -25,7 +25,7 @@ class StoreTravelRequest extends FormRequest
     {
         return [
             'driver_id' => 'required|exists:drivers,id',
-            'origin' => 'required|string',
+            'branch_office_id' => 'required|exists:branch_offices,id',
             'departure_date' => 'required|date|date_format:Y-m-d|before:arrival_date',
             'arrival_date' => 'required|date|date_format:Y-m-d|after:departure_date'
         ];

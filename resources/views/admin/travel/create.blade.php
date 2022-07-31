@@ -22,9 +22,14 @@
                         @enderror
                     </div>
                     <div class="mb-3 col-md-2">
-                        <label for="origin" class="form-label">{{ __('Origin') }}</label>
-                        <input type="text" class="form-control" name="origin" id="origin">
-                        @error('origin')
+                        <label for="branch_office_id" class="form-label">{{ __('Origin') }}</label>
+                        <select class="form-control" name="branch_office_id" id="branch_office_id">
+                            <option value="" selected disabled>{{ __('Select a origin') }}</option>
+                            @foreach ($branchOffices as $branchOffice)
+                                <option value="{{ $branchOffice->id }}">{{ $branchOffice->name }}</option>
+                            @endforeach
+                        </select>
+                        @error('branch_office_id')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
                     </div>
