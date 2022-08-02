@@ -19,6 +19,7 @@
                         <tr>
                             <th>{{ __('ID') }}</th>
                             <th>{{ __('Driver') }}</th>
+                            <th>{{ __('Origin') }}</th>
                             <th>{{ __('Actions') }}</th>
                         </tr>
                     </thead>
@@ -27,6 +28,7 @@
                             <tr>
                                 <td>{{ $travel->id }}</td>
                                 <td>{{ $travel->driver->name }}</td>
+                                <td>{{ $travel->branchOffice->name }}</td>
                                 <td>
                                     <a href="{{ route('travels.show', $travel->id) }}" class="btn btn-info">{{ __('Details') }}</a>
                                     <a href="{{ route('travels.edit', $travel->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>

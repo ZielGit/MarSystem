@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('travel', function (Blueprint $table) {
             $table->id();
             $table->foreignId('driver_id')->constrained();
-            $table->string('origin');
+            $table->foreignId('branch_office_id')->constrained();
             $table->dateTime('departure_date');
             $table->dateTime('arrival_date');
             $table->timestamps();

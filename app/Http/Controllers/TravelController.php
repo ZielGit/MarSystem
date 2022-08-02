@@ -5,42 +5,28 @@ namespace App\Http\Controllers;
 use App\Models\Travel;
 use App\Http\Requests\Admin\Travel\StoreTravelRequest;
 use App\Http\Requests\Admin\Travel\UpdateTravelRequest;
+use App\Models\BranchOffice;
 use App\Models\Customer;
 use App\Models\Driver;
 use App\Models\Product;
 
 class TravelController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $travels = Travel::get();
         return view('admin.travel.index', compact('travels'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $drivers = Driver::get();
+        $branchOffices = BranchOffice::get();
         $customers = Customer::get();
         $products = Product::get();
-        return view('admin.travel.create', compact('drivers', 'customers', 'products'));
+        return view('admin.travel.create', compact('drivers', 'branchOffices', 'customers', 'products'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreTravelRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreTravelRequest $request)
     {
         $travel = Travel::create($request->all());
