@@ -141,8 +141,8 @@
                             @enderror
                         </div>
                         <div class="col-lg-6 mb-3">
-                            <label for="igv" class="form-label">{{ __('IGV') }}</label>
-                            <input type="number" class="form-control" name="" id="igv" value="18" readonly>
+                            <label for="igv" class="form-label">{{ __('IGV') }} (18%)</label>
+                            <input type="number" class="form-control" name="" id="igv" readonly>
                         </div>
                         <div class="col-lg-6 mb-3">
                             <label for="subtotal" class="form-label">{{ __('Subtotal') }}</label>
@@ -153,8 +153,8 @@
                             <input type="number" class="form-control" name="" id="total" step="any" readonly>
                         </div>
                         <div class="col-lg-6 mb-3">
-                            <label for="detraction" class="form-label">{{ __('Detraction') }}</label>
-                            <input type="number" class="form-control" name="" id="detraction" value="15" readonly>
+                            <label for="detraction" class="form-label">{{ __('Detraction') }} (15%)</label>
+                            <input type="number" class="form-control" name="" id="detraction" readonly>
                         </div>
                         <div class="mb-3">
                             <label for="total_price" class="form-label">{{ __('Total Price') }}</label>
@@ -194,10 +194,12 @@
                 subtotal = weight * price_kilo;
                 $('#subtotal').val(subtotal);
                 igv = subtotal * 0.18;
+                $('#igv').val(igv);
                 total = subtotal + igv;
                 $('#total').val(total);
-                detraccion = total * 0.15;
-                efectivo = total - Math.ceil(detraccion);
+                detraction = total * 0.15;
+                efectivo = total - Math.ceil(detraction);
+                $('#detraction').val(Math.ceil(detraction))
                 $('#total_price').val(efectivo);
             }
         });
