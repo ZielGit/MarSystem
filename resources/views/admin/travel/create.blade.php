@@ -66,6 +66,7 @@
                                 <th>{{ __('Product') }}</th>
                                 <th>{{ __('Product Type') }}</th>
                                 <th>{{ __('Weight') }}</th>
+                                <th>{{ __('Price per Kilo') }}</th>
                                 <th>{{ __('Total Price') }}</th>
                                 <th>{{ __('Delete') }}</th>
                             </tr>
@@ -92,58 +93,76 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="customer_id" class="form-label">{{ __('Customer') }}</label>
-                        <select class="form-select select2-customer" name="customer_id" id="customer_id" data-placeholder="{{ __('Choose the customer') }}">
-                            <option value="select" selected disabled>{{ __('Select a customer') }}</option>
-                            @foreach ($customers as $customer)
-                                <option value="{{ $customer->id }}">{{ $customer->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('customer_id')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="product_id" class="form-label">{{ __('Product') }}</label>
-                        <select class="form-select" name="product_id" id="product_id">
-                            <option value="select" selected disabled>{{ __('Select a Product') }}</option>
-                            @foreach ($products as $product)
-                                <option value="{{ $product->id }}" data-type="{{ json_encode($product->productTypes) }}">{{ $product->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('product_id')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
-                        <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
-                        </select>
-                        @error('product_type_id')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="weight" class="form-label">{{ __('Weight') }}</label>
-                        <input type="number" class="form-control" name="weight" id="weight" min="0">
-                        @error('weight')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="price_kilo" class="form-label">{{ __('Price per Kilo') }}</label>
-                        <input type="number" class="form-control" name="price_kilo" id="price_kilo" min="0" step="any">
-                        @error('price_kilo')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="total_price" class="form-label">{{ __('Total Price') }}</label>
-                        <input type="number" class="form-control" name="total_price" id="total_price" min="0" step="any">
-                        @error('total_price')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="customer_id" class="form-label">{{ __('Customer') }}</label>
+                            <select class="form-select select2-customer" name="customer_id" id="customer_id" data-placeholder="{{ __('Choose the customer') }}">
+                                <option value="select" selected disabled>{{ __('Select a customer') }}</option>
+                                @foreach ($customers as $customer)
+                                    <option value="{{ $customer->id }}">{{ $customer->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('customer_id')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_id" class="form-label">{{ __('Product') }}</label>
+                            <select class="form-select" name="product_id" id="product_id">
+                                <option value="select" selected disabled>{{ __('Select a Product') }}</option>
+                                @foreach ($products as $product)
+                                    <option value="{{ $product->id }}" data-type="{{ json_encode($product->productTypes) }}">{{ $product->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('product_id')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
+                            <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
+                            </select>
+                            @error('product_type_id')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="weight" class="form-label">{{ __('Weight') }}</label>
+                            <input type="number" class="form-control" name="weight" id="weight" min="0">
+                            @error('weight')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="price_kilo" class="form-label">{{ __('Price per Kilo') }}</label>
+                            <input type="number" class="form-control" name="price_kilo" id="price_kilo" min="0" step="any">
+                            @error('price_kilo')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="igv" class="form-label">{{ __('IGV') }}</label>
+                            <input type="number" class="form-control" name="" id="igv" value="18" readonly>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="subtotal" class="form-label">{{ __('Subtotal') }}</label>
+                            <input type="number" class="form-control" name="" id="subtotal" step="any" readonly>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="total" class="form-label">{{ __('Total') }}</label>
+                            <input type="number" class="form-control" name="" id="total" step="any" readonly>
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="detraction" class="form-label">{{ __('Detraction') }}</label>
+                            <input type="number" class="form-control" name="" id="detraction" value="15" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="total_price" class="form-label">{{ __('Total Price') }}</label>
+                            <input type="number" class="form-control" name="total_price" id="total_price" min="0" step="any">
+                            @error('total_price')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -173,8 +192,10 @@
                 weight = $('#weight').val();
                 price_kilo = $('#price_kilo').val();
                 subtotal = weight * price_kilo;
+                $('#subtotal').val(subtotal);
                 igv = subtotal * 0.18;
                 total = subtotal + igv;
+                $('#total').val(total);
                 detraccion = total * 0.15;
                 efectivo = total - Math.ceil(detraccion);
                 $('#total_price').val(efectivo);
@@ -222,6 +243,7 @@
             $("#product_id").val("select");
             $("#product_type_id").empty();
             $("#weight").val("");
+            $("#price_kilo").val("");
             $("#total_price").val("");
             $("#product_type_id").html('<option value="">{{ __("Select a type of product") }}</option>');
         }
