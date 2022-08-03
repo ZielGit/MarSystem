@@ -39,13 +39,6 @@
                         </select>
                     </div>
                     <div class="mb-3 col-md-6">
-                        <label for="quantity_released" class="form-label">{{ __('Quantity Released') }}</label>
-                        <input type="number" class="form-control" name="quantity_released" id="quantity_released" min="0" value="{{ old('quantity_released') }}">
-                        @error('quantity_released')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3 col-md-6">
                         <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
                         <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
                         </select>
@@ -54,10 +47,19 @@
                         @enderror
                     </div>
                     <div class="mb-3 col-md-6">
+                        <label for="current_stock" class="form-label">{{ __('Current Stock') }}</label>
+                        <input type="number" class="form-control" id="current_stock" min="0" readonly>
+                    </div>
+                    <div class="mb-3 col-md-6">
+                        <label for="quantity_released" class="form-label">{{ __('Quantity to Release') }}</label>
+                        <input type="number" class="form-control" name="quantity_released" id="quantity_released" min="0" value="{{ old('quantity_released') }}">
+                        @error('quantity_released')
+                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                        @enderror
+                    </div>
+                    <div class="mb-3 col-md-6">
                         <label for="observations" class="form-label">{{ __('Observations') }}</label>
-                        <textarea class="form-control" name="observations" id="observations" rows="3" aria-describedby="observationsHelp">
-                            {{ old('observations') }}
-                        </textarea>
+                        <textarea class="form-control" name="observations" id="observations" rows="2" aria-describedby="observationsHelp">{{ old('observations') }}</textarea>
                         <div id="observationsHelp" class="form-text text-muted">{{ __('This is an optional field') }}</div>
                         @error('observations')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
@@ -73,6 +75,7 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ asset('plugins/sweetalert2/sweetalert2.all.min.js') }}"></script>
     <script>
         $('select[name=product_id]').on('change',function() {
             $('select[name=product_type_id]').html('<option value="" selected disabled>{{ __("Select a type of product") }}</option>');
@@ -82,6 +85,32 @@
                 html += `<option value="${item.id}">${item.name}</option>`
             });
             $('select[name=product_type_id]').append(html);
+        });
+
+        $("#product_type_id").change(function () { 
+            var product_type_id = $('#product_type_id');
+            $.ajax({
+                method: "GET",
+                url: "{{ route('get.stock') }}",
+                data: {
+                    product_type_id: product_type_id.val(),
+                },
+                success: function (data) {
+                    $("#current_stock").val(data.stock);
+                }
+            });
+        });
+
+        $("#current_stock, #quantity_released").change(function () { 
+            current_stock = $("#current_stock").val();
+            quantity_released = $("#quantity_released").val();
+            if (current_stock < quantity_released) {
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Oops...',
+                    text: '{{ __("The quantity to be released exceeds the current stock") }}',
+                })
+            }
         });
     </script>
 @endpush

@@ -6,27 +6,18 @@ use App\Models\Gathering;
 use App\Http\Requests\Admin\Gathering\StoreGatheringRequest;
 use App\Http\Requests\Admin\Gathering\UpdateGatheringRequest;
 use App\Models\Product;
+use App\Models\ProductType;
 use App\Models\Provider;
 use Illuminate\Support\Facades\Auth;
 
 class GatheringController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
         $gatherings = Gathering::get();
         return view('admin.gathering.index', compact('gatherings'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
         $providers = Provider::get();
@@ -34,37 +25,26 @@ class GatheringController extends Controller
         return view('admin.gathering.create', compact('providers', 'products'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \App\Http\Requests\StoreGatheringRequest  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(StoreGatheringRequest $request)
     {
         $gathering = Gathering::create($request->all()+[
             'user_id'=>Auth::user()->id
         ]);
 
-        foreach ($request->product_id as $key => $product) {
+        foreach ($request->product_type_id as $key => $product) {
             $result[] = array(
                 "product_id" => $request->product_id[$key],
                 "product_type_id" => $request->product_type_id[$key],
                 "packages" => $request->packages[$key],
                 "weight" => $request->weight[$key]
             );
+            ProductType::where('id', $request->product_type_id[$key])->increment('stock', $request->weight[$key]);
         }
-
+        
         $gathering->gatheringDetails()->createMany($result);
         return redirect()->route('gatherings.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Gathering  $gathering
-     * @return \Illuminate\Http\Response
-     */
     public function show(Gathering $gathering)
     {
         $gatheringDetails = $gathering->gatheringDetails;
