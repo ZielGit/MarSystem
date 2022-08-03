@@ -101,39 +101,44 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <label for="product_id" class="form-label">{{ __('Product') }}</label>
-                        <select class="form-select" name="product_id" id="product_id">
-                            <option value="select" selected disabled>{{ __('Select a Product') }}</option>
-                            @foreach ($products as $product)
-                                <option value="{{ $product->id }}" data-type="{{ json_encode($product->productTypes) }}">{{ $product->name }}</option>
-                            @endforeach
-                        </select>
-                        @error('product_id')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
-                        <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
-                        </select>
-                        @error('product_type_id')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="packages" class="form-label">{{ __('Packages') }}</label>
-                        <input type="number" class="form-control" name="packages" id="packages" min="0">
-                        @error('packages')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
-                    </div>
-                    <div class="mb-3">
-                        <label for="weight" class="form-label">{{ __('Weight') }}</label>
-                        <input type="number" class="form-control" name="weight" id="weight" min="0" readonly>
-                        @error('weight')
-                            <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
-                        @enderror
+                    <div class="row">
+                        <div class="mb-3">
+                            <label for="product_id" class="form-label">{{ __('Product') }}</label>
+                            <select class="form-select" name="product_id" id="product_id">
+                                <option value="select" selected disabled>{{ __('Select a Product') }}</option>
+                                @foreach ($products as $product)
+                                    <option value="{{ $product->id }}" data-type="{{ json_encode($product->productTypes) }}">{{ $product->name }}</option>
+                                @endforeach
+                            </select>
+                            @error('product_id')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="mb-3">
+                            <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
+                            <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
+                            </select>
+                            @error('product_type_id')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="packages" class="form-label">{{ __('Packages') }}</label>
+                            <input type="number" class="form-control" name="packages" id="packages" min="0">
+                            @error('packages')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="col-lg-6 mb-3">
+                            <label for="weight" class="form-label">{{ __('Weight') }}</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="weight" id="weight" min="0" readonly>
+                                <span class="input-group-text">Kg</span>
+                            </div>
+                            @error('weight')
+                                <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
+                            @enderror
+                        </div>
                     </div>
                 </div>
                 <div class="modal-footer">

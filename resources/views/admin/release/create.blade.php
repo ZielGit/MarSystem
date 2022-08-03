@@ -48,11 +48,17 @@
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="current_stock" class="form-label">{{ __('Current Stock') }}</label>
-                        <input type="number" class="form-control" id="current_stock" min="0" readonly>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="current_stock" min="0" readonly>
+                            <span class="input-group-text">Kg</span>
+                        </div>
                     </div>
                     <div class="mb-3 col-md-6">
                         <label for="quantity_released" class="form-label">{{ __('Quantity to Release') }}</label>
-                        <input type="number" class="form-control" name="quantity_released" id="quantity_released" min="0" value="{{ old('quantity_released') }}">
+                        <div class="input-group">
+                            <input type="number" class="form-control" name="quantity_released" id="quantity_released" min="0" value="{{ old('quantity_released') }}">
+                            <span class="input-group-text">Kg</span>
+                        </div>
                         @error('quantity_released')
                             <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                         @enderror
