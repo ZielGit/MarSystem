@@ -41,6 +41,8 @@ Route::get('search-dni', [UserController::class, 'search_dni'])->name('search.dn
 Route::get('search-ruc', [ProviderController::class, 'search_ruc'])->name('search.ruc');
 Route::get('search', [CustomerController::class, 'search'])->name('search');
 
+Route::get('get-stock', [ProductTypeController::class, 'get_stock'])->name('get.stock');
+
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),

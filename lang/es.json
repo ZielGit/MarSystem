@@ -509,10 +509,12 @@
     "Create Release":"Crear Liberación",
     "Create New Release":"Crear Nueva Liberación",
     "Lot":"Lote",
-    "Quantity Released":"Cantidad Liberada",
+    "Quantity to Release":"Cantidad a Liberar",
+    "Current Stock":"Stock Actual",
     "Observations":"Observaciones",
     "Gathering of the last 30 days":"Acopio de los ultimos 30 dias",
     "Release of the last 30 days":"Liberación de los ultimos 30 dias",
     "Select a origin":"Seleccione un origen",
-    "Detraction":"Detracción"
+    "Detraction":"Detracción",
+    "The quantity to be released exceeds the current stock":"La cantidad a liberar supera el stock actual"
 }

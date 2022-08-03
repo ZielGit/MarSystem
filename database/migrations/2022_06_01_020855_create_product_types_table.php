@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->unique();
             $table->foreignId('product_id')->constrained();
+            $table->integer('stock')->default(0);
             $table->timestamps();
         });
     }

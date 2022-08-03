@@ -25,7 +25,7 @@ class StoreProductTypeRequest extends FormRequest
     {
         return [
             'name' => 'required|string|unique:product_types,name',
-            'product_id' => 'required|exists:products,id'
+            'product_id' => 'required|exists:products,id',
         ];
     }
 }
