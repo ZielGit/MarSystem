@@ -32,7 +32,7 @@
                                 <td>{{ $release->customer->name }}</td>
                                 <td>{{ $release->productType->name }}</td>
                                 <td>{{ $release->quantity_released }}</td>
-                                <td>{{ $release->date }}</td>
+                                <td>{{ $release->created_at }}</td>
                                 <td>
                                     <a href="{{ route('releases.show', $release->id) }}" class="btn btn-info">{{ __('Details') }}</a>
                                     <a href="{{ route('releases.edit', $release->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
