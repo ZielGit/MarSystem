@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Admin\Release\StoreReleaseRequest;
 use App\Models\Customer;
 use App\Models\Product;
+use App\Models\ProductType;
 use App\Models\Release;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -30,18 +31,14 @@ class ReleaseController extends Controller
             'user_id'=>Auth::user()->id,
         ]);
 
+        ProductType::where('id', $request->product_type_id)->decrement('stock', $request->quantity_released);
+
         return redirect()->route('releases.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Release  $release
-     * @return \Illuminate\Http\Response
-     */
     public function show(Release $release)
     {
-        //
+        return view('admin.release.show', compact('release'));
     }
 
     /**

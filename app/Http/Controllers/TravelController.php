@@ -46,15 +46,9 @@ class TravelController extends Controller
         return redirect()->route('travels.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Travel  $travel
-     * @return \Illuminate\Http\Response
-     */
     public function show(Travel $travel)
     {
-        //
+        return view('admin.travel.show', compact('travel'));
     }
 
     /**

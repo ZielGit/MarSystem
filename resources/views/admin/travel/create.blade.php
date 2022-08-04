@@ -106,7 +106,7 @@
                                 <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-3">
+                        <div class="col-lg-6 mb-3">
                             <label for="product_id" class="form-label">{{ __('Product') }}</label>
                             <select class="form-select" name="product_id" id="product_id">
                                 <option value="select" selected disabled>{{ __('Select a Product') }}</option>
@@ -118,7 +118,7 @@
                                 <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                             @enderror
                         </div>
-                        <div class="mb-3">
+                        <div class="col-lg-6 mb-3">
                             <label for="product_type_id" class="form-label">{{ __('Product Type') }}</label>
                             <select class="form-select select2-brand" name="product_type_id" id="product_type_id">
                             </select>
@@ -128,7 +128,10 @@
                         </div>
                         <div class="col-lg-6 mb-3">
                             <label for="weight" class="form-label">{{ __('Weight') }}</label>
-                            <input type="number" class="form-control" name="weight" id="weight" min="0">
+                            <div class="input-group">
+                                <input type="number" class="form-control" name="weight" id="weight" min="0">
+                                <span class="input-group-text">Kg</span>
+                            </div>
                             @error('weight')
                                 <div class="alert alert-danger mt-2 mb-0" role="alert">{{ $message }}</div>
                             @enderror

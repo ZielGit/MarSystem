@@ -32,13 +32,13 @@
                                 <td>{{ $customer->document_type }}</td>
                                 <td>{{ $customer->document_number }}</td>
                                 <td>
-                                    <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-info">{{ __('Show') }}</a>
+                                    <a href="{{ route('customers.show', $customer->id) }}" class="btn btn-info">{{ __('Details') }}</a>
                                     <a href="{{ route('customers.edit', $customer->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
-                                    <form action="{{ route('customers.destroy', $customer->id) }}" class="d-inline" method="post">
+                                    {{-- <form action="{{ route('customers.destroy', $customer->id) }}" class="d-inline" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach

@@ -38,11 +38,11 @@
                                 <td>
                                     <a href="{{ route('users.show', $user->id) }}" class="btn btn-info">{{ __('Details') }}</a>
                                     <a href="{{ route('users.edit', $user->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
-                                    <form action="{{ route('users.destroy', $user->id) }}" class="d-inline" method="post">
+                                    {{-- <form action="{{ route('users.destroy', $user->id) }}" class="d-inline" method="post">
                                         @csrf
                                         @method('delete')
                                         <button type="submit" class="btn btn-danger">{{ __('Delete') }}</button>
-                                    </form>
+                                    </form> --}}
                                 </td>
                             </tr>
                         @endforeach
