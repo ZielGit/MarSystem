@@ -517,5 +517,7 @@
     "Release of the last 30 days":"Liberación de los ultimos 30 dias",
     "Select a origin":"Seleccione un origen",
     "Detraction":"Detracción",
-    "The quantity to be released exceeds the current stock":"La cantidad a liberar supera el stock actual"
+    "The quantity to be released exceeds the current stock":"La cantidad a liberar supera el stock actual",
+    "Cardboard gathering of the day":"Acopio de cartón del día",
+    "Plastic gathering of the day":"Acopio de plástico del día"
 }
