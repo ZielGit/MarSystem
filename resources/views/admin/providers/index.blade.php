@@ -30,7 +30,7 @@
                                 <td>{{ $provider->name }}</td>
                                 <td>{{ $provider->ruc }}</td>
                                 <td>
-                                    <a href="{{ route('providers.show', $provider->id) }}" class="btn btn-info">{{ __('Show') }}</a>
+                                    <a href="{{ route('providers.show', $provider->id) }}" class="btn btn-info">{{ __('Details') }}</a>
                                     <a href="{{ route('providers.edit', $provider->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
                                     {{-- <form action="{{ route('providers.destroy', $provider->id) }}" class="d-inline" method="post">
                                         @csrf

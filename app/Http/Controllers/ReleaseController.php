@@ -36,15 +36,9 @@ class ReleaseController extends Controller
         return redirect()->route('releases.index');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Release  $release
-     * @return \Illuminate\Http\Response
-     */
     public function show(Release $release)
     {
-        //
+        return view('admin.release.show', compact('release'));
     }
 
     /**
