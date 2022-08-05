@@ -22,7 +22,10 @@
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/fonts/boxicons.css') }}" />
         <!-- Fontawesome -->
         <script src="https://kit.fontawesome.com/70ed03d184.js" crossorigin="anonymous"></script>
-
+        <!-- DataTables 1.11.5 -->
+        <link rel="stylesheet" href="{{ asset('plugins/datatables-bs5/datatables.min.css') }}">
+        <!-- DataTables Buttons 2.2.3 -->
+        <link rel="stylesheet" href="{{ asset('plugins/datatables-buttons/css/buttons.bootstrap5.min.css') }}">
         <!-- Core CSS -->
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/css/core.css') }}" class="template-customizer-core-css" />
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/css/theme-default.css') }}" class="template-customizer-theme-css" />
@@ -30,8 +33,6 @@
 
         <!-- Vendors CSS -->
         <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.css') }}" />
-
-        <link rel="stylesheet" href="{{ asset('sneat/assets/vendor/libs/apex-charts/apex-charts.css') }}" />
 
         @stack('styles')
 
@@ -105,6 +106,15 @@
         <script src="{{ asset('sneat/assets/vendor/libs/jquery/jquery.js') }}"></script>
         <script src="{{ asset('sneat/assets/vendor/libs/popper/popper.js') }}"></script>
         <script src="{{ asset('sneat/assets/vendor/js/bootstrap.js') }}"></script>
+        <!-- DataTables & Plugins -->
+        <script src="{{ asset('plugins/datatables-bs5/datatables.min.js') }}"></script>
+        <script src="{{ asset('plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
+        <script src="{{ asset('plugins/datatables-buttons/js/buttons.bootstrap5.min.js') }}"></script>
+        <script src="{{ asset('plugins/jszip/jszip.min.js') }}"></script>
+        <script src="{{ asset('plugins/pdfmake/pdfmake.min.js') }}"></script>
+        <script src="{{ asset('plugins/pdfmake/vfs_fonts.js') }}"></script>
+        <script src="{{ asset('plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
+
         <script src="{{ asset('sneat/assets/vendor/libs/perfect-scrollbar/perfect-scrollbar.js') }}"></script>
 
         <script src="{{ asset('sneat/assets/vendor/js/menu.js') }}"></script>
