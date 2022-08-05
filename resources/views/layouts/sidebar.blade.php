@@ -20,6 +20,21 @@
                 <i class="menu-icon tf-icons bx bxs-dashboard"></i> {{ __('Dashboard') }}
             </a>
         </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('gatherings.*')">
+            <a href="{{ route('gatherings.index') }}" class="menu-link">
+                <i class="tf-icons fa-solid fa-people-carry-box me-2"></i> {{ __('Gathering') }}
+            </a>
+        </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('releases.*')">
+            <a href="{{ route('releases.index') }}" class="menu-link">
+                <i class="fas fa-box-open me-2"></i> {{ __('Release') }}
+            </a>
+        </x-jet-nav-link>
+        <x-jet-nav-link :active="request()->routeIs('travels.*')">
+            <a href="{{ route('travels.index') }}" class="menu-link">
+                <i class="fa-solid fa-truck-fast me-2"></i> {{ __('Travels') }}
+            </a>
+        </x-jet-nav-link>
         <!-- Users -->
         <x-jet-nav-link :active="request()->routeIs('users.*')">
             <a href="{{ route('users.index') }}" class="menu-link">
@@ -58,24 +73,10 @@
                 <i class='menu-icon tf-icons bx bxs-truck'></i> {{ __('Providers') }}
             </a>
         </x-jet-nav-link>
-        <x-jet-nav-link :active="request()->routeIs('gatherings.*')">
-            <a href="{{ route('gatherings.index') }}" class="menu-link">
-                <i class="tf-icons fa-solid fa-people-carry-box me-2"></i> {{ __('Gathering') }}
-            </a>
-        </x-jet-nav-link>
+        
         <x-jet-nav-link :active="request()->routeIs('drivers.*')">
             <a href="{{ route('drivers.index') }}" class="menu-link">
                 <i class="fa-solid fa-users me-2"></i> {{ __('Drivers') }}
-            </a>
-        </x-jet-nav-link>
-        <x-jet-nav-link :active="request()->routeIs('travels.*')">
-            <a href="{{ route('travels.index') }}" class="menu-link">
-                <i class="fa-solid fa-truck-fast me-2"></i> {{ __('Travels') }}
-            </a>
-        </x-jet-nav-link>
-        <x-jet-nav-link :active="request()->routeIs('releases.*')">
-            <a href="{{ route('releases.index') }}" class="menu-link">
-                <i class="fas fa-box-open me-2"></i> {{ __('Release') }}
             </a>
         </x-jet-nav-link>
     </ul>

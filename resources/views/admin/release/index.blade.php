@@ -14,7 +14,7 @@
     <div class="card">
         <div class="card-body">
             <div class="table-responsive text-nowrap">
-                <table class="table">
+                <table class="table" id="table-release">
                     <thead>
                         <tr>
                             <th>{{ __('ID') }}</th>
@@ -51,3 +51,17 @@
     </div>
 </div>
 @endsection
+
+@push('scripts')
+    <script>
+        $(document).ready(function() {
+            var table = $('#table-release').DataTable( {
+                lengthChange: false,
+                buttons: [ 'excel', 'pdf' ]
+            } );
+        
+            table.buttons().container()
+                .appendTo( '#table-release_wrapper .col-md-6:eq(0)' );
+        } );
+    </script>
+@endpush
