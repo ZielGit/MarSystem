@@ -32,6 +32,7 @@
                                 <td>
                                     <a href="{{ route('travels.show', $travel->id) }}" class="btn btn-info">{{ __('Details') }}</a>
                                     <a href="{{ route('travels.edit', $travel->id) }}" class="btn btn-warning">{{ __('Edit') }}</a>
+                                    <a href="{{ route('carrier.guide') }}" class="btn btn-success" target="_blank">{{ __('Carrier Guide') }}</a>
                                     {{-- <form action="{{ route('travels.destroy', $travel->id) }}" class="d-inline" method="post">
                                         @csrf
                                         @method('delete')
