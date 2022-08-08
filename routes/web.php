@@ -43,6 +43,8 @@ Route::get('search', [CustomerController::class, 'search'])->name('search');
 
 Route::get('get-stock', [ProductTypeController::class, 'get_stock'])->name('get.stock');
 
+Route::get('carrier-guide', [TravelController::class, 'carrier_guide'])->name('carrier.guide');
+
 // Route::middleware([
 //     'auth:sanctum',
 //     config('jetstream.auth_session'),

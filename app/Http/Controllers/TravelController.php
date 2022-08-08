@@ -9,6 +9,7 @@ use App\Models\BranchOffice;
 use App\Models\Customer;
 use App\Models\Driver;
 use App\Models\Product;
+use Barryvdh\DomPDF\Facade\Pdf;
 
 class TravelController extends Controller
 {
@@ -83,5 +84,11 @@ class TravelController extends Controller
     public function destroy(Travel $travel)
     {
         //
+    }
+
+    public function carrier_guide()
+    {
+        $pdf = PDF::loadView('admin.travel.carrier_guide');
+        return $pdf->setPaper('a4', 'landscape')->stream('Guia_Transportista.pdf');
     }
 }
